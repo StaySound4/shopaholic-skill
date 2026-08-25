@@ -9,8 +9,8 @@ if (!userHome) {
   process.exit(1);
 }
 
-const targetDir = path.join(userHome, '.agents', 'skills', 'shopper');
-const srcDir = path.join(__dirname, '..', 'skills', 'shopper');
+const targetDir = path.join(userHome, '.agents', 'skills', 'shopaholic');
+const srcDir = path.join(__dirname, '..', 'skills', 'shopaholic');
 
 function copyDir(src, dest) {
   fs.mkdirSync(dest, { recursive: true });
@@ -28,9 +28,9 @@ function copyDir(src, dest) {
 try {
   copyDir(srcDir, targetDir);
   console.log('====================================================');
-  console.log('✅ Shopper Skill installed successfully!');
+  console.log('✅ Shopaholic Skill installed successfully!');
   console.log(`📁 Installed location: ${targetDir}`);
-  console.log('💡 You can now use "shopper" skill in your AI agent.');
+  console.log('💡 You can now use "shopaholic" skill in your AI agent.');
   console.log('====================================================');
 } catch (err) {
   console.error('❌ Installation failed:', err.message);

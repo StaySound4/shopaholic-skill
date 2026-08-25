@@ -1,10 +1,10 @@
 {
-  "name": "pi-shopper",
+  "name": "pi-shopaholic",
   "version": "1.0.0",
   "description": "循证购物决策与全景行业调研顾问 - Evidence-based shopping decision, supply chain intelligence & anti-overcharge skill for AI Agents (Pi, Claude, OpenClaw).",
   "main": "index.js",
   "bin": {
-    "install-shopper": "./bin/cli.js"
+    "install-shopaholic": "./bin/cli.js"
   },
   "keywords": [
     "pi-package",
@@ -14,26 +14,28 @@
     "openclaw-skill",
     "mcp",
     "shopping-advisor",
+    "shopaholic",
     "china-ecommerce",
     "product-research",
     "循证导购",
     "购物决策",
     "国标溯源",
-    "防翻车"
+    "防翻车",
+    "反GEO投毒"
   ],
   "author": "StaySound4",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/StaySound4/pi-shopper.git"
+    "url": "https://github.com/StaySound4/shopaholic.git"
   },
   "bugs": {
-    "url": "https://github.com/StaySound4/pi-shopper/issues"
+    "url": "https://github.com/StaySound4/shopaholic/issues"
   },
-  "homepage": "https://github.com/StaySound4/pi-shopper#readme",
+  "homepage": "https://github.com/StaySound4/shopaholic#readme",
   "pi": {
     "skills": [
-      "skills/shopper"
+      "skills/shopaholic"
     ]
   },
   "files": [
