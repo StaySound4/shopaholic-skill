@@ -1,0 +1,25 @@
+# Shopaholic.skill
+
+> 专为中国大陆主流电商（淘宝、天猫、京东、拼多多、抖音电商等）打造的循证购物决策与供应链分析 Agent Skill。
+
+## 核心定位
+Shopaholic 帮助用户穿透商品营销话术，基于国家与行业标准、第三方独立拆解数据及长周期真实用户反馈，提供客观、低后悔率的理性消费决策支持。
+
+## 四大自适应工作模式
+- **模式 A（先问再买）**：当用户需求缺少关键变量（如尺寸、人数、材质、排水等）时，主动提出 2~5 个关键问题，讲清变量影响，避免盲买。
+- **模式 B（执行推荐）**：提供底层原理科普、4-Lane 交叉核验矩阵、明确优缺点与落选原因。
+- **模式 C（全网劝退）**：当该品类普遍处于高价位、技术迭代期或存在严重共性暗病时，明确给出劝退与观望时机。
+- **模式 D（候选终审）**：针对用户提供的具体型号列表，输出“保留 / 替换 / 淘汰”终审表格。
+
+## 极速安装
+- **自然语言口令（推荐）**：直接对你的 AI 助手说：`请帮我安装这个技能：https://github.com/StaySound4/shopaholic-skill`
+- **Pi Agent**：`pi install git:StaySound4/shopaholic-skill`
+- **Claude Code**：`git clone https://github.com/StaySound4/shopaholic-skill.git ~/.claude/skills/shopaholic`
+- **OpenAI Codex**：`git clone https://github.com/StaySound4/shopaholic-skill.git .agents/skills/shopaholic`
+- **通用 NPX**：`npx StaySound4/shopaholic-skill`
+
+## 知识库与规范
+- `SKILL.md`：核心决策流程与输出规范
+- `references/category-checklists.md`：12 大常见消费品类标准与避坑清单
+- `references/evidence-and-risks.md`：信源四级金字塔与反软广脱水指南
+- `references/research-protocol.md`：4-Lane 交叉取证与全生命周期成本 (TCO) 计算

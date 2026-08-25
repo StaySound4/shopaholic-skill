@@ -1,0 +1,271 @@
+<div align="center">
+
+<img src="assets/logo.png" alt="Shopaholic.skill Logo" width="140" height="140" style="border-radius: 24px; margin-bottom: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+
+# Shopaholic.skill
+
+> **Open-source evidence-based consumer decision support & supply chain intelligence Agent Skill for shoppers using AI across Chinese e-commerce**  
+> *Grounded in physical manufacturing principles, published industry standards, independent teardowns, and verified long-term consumer feedback to minimize post-purchase regret.*
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-green)](https://agentskills.io)
+[![skills.sh](https://img.shields.io/badge/skills.sh-Compatible-blue)](https://skills.sh)
+[![Multi-Runtime](https://img.shields.io/badge/Runtime-Claude%20Code%20·%20Codex%20·%20Cursor%20·%20Pi%20·%20OpenClaw-blueviolet)](#-quick-installation-guide)
+[![Version](https://img.shields.io/badge/Release-v0.9.0-orange)](https://github.com/StaySound4/shopaholic-skill/releases/tag/v0.9.0)
+
+<br>
+
+**Shopaholic is an objective consumer decision support tool designed for shoppers using AI across Chinese e-commerce platforms (Taobao, Tmall, JD.com, Pinduoduo, Douyin).**  
+**Zero affiliate bias, zero CPS commissions. Shopaholic focuses strictly on genuine material quality, engineering teardowns, and verified long-term user feedback so you understand exactly what you are paying for.**
+
+<sub>Built on the open [Agent Skills specification](https://agentskills.io), natively compatible with Claude Code, OpenAI Codex, Cursor, Pi Agent, OpenClaw, and 50+ agent runtimes.</sub>
+
+<br>
+
+[⚡ Installation](#-quick-installation-guide) · [🔍 Pre-Research Mechanism](#-core-mechanism-how-domain-pre-research-works) · [📱 Live Examples](#-live-examples-real-world-dialogue) · [🧭 4 Workflows](#-decision-workflow--4-output-modes) · [📚 12 Categories](#-12-category-reference-checklists) · [⚖️ Compliance & Disclaimer](#-compliance--disclaimer)
+
+<br>
+
+**Other Languages / 其他语言:**  
+[中文说明文档 (Chinese)](README.md)
+
+<br>
+
+[![Star History Chart](https://api.star-history.com/svg?repos=StaySound4/shopaholic-skill&type=Date)](https://star-history.com/#StaySound4/shopaholic-skill&Date)
+
+</div>
+
+---
+
+## ⚡ Quick Installation Guide
+
+**Shopaholic supports instant natural-language installation and one-line CLI setup across all major agent environments.**
+
+### Method 1: Natural Language Prompt (Recommended 🌟)
+
+Open any AI client you are using (Claude Code, ChatGPT/Codex, Cursor, Pi Agent, OpenClaw, etc.), and simply say:
+
+> **"Please install this skill for me: https://github.com/StaySound4/shopaholic-skill"**
+
+---
+
+### Method 2: One-Line Terminal Commands
+
+<details open>
+<summary><b>Click to expand / collapse CLI commands</b></summary>
+
+```bash
+# Pi Coding Agent
+pi install git:StaySound4/shopaholic-skill
+
+# Claude Code
+git clone https://github.com/StaySound4/shopaholic-skill.git ~/.claude/skills/shopaholic
+
+# OpenAI Codex / ChatGPT Agent
+git clone https://github.com/StaySound4/shopaholic-skill.git .agents/skills/shopaholic
+
+# OpenClaw / ClawHub
+clawhub install shopaholic
+
+# Universal NPX Installer
+npx StaySound4/shopaholic-skill
+```
+</details>
+
+---
+
+## 🔍 Core Mechanism: How Domain Pre-Research Works
+
+Unlike generic AI assistants that rely on vague training memory, Shopaholic automatically executes **Phase 0: Domain Pre-Research** in the background before analyzing specific models:
+
+```
+                ┌─────────────────────────────────────────────────────────────┐
+                │        【Phase 0: Automated Domain Pre-Research Protocol】   │
+                └──────────────────────────────┬──────────────────────────────┘
+                                               │
+        ┌──────────────────────────────────────┼──────────────────────────────────────┐
+        ▼                                      ▼                                      ▼
+【1. Manufacturing Principles】         【2. Statutory Standards】             【3. TCO & Failure Modes】
+- Audit core components & materials     - Sourced published standards          - Compute ongoing filter/part costs
+  (e.g., Fast-IPS packaging,             (3C certification, food-grade          - Cross-verify 3~12 month long-term
+   PID thermal control, cutter blades)    materials, energy efficiency ratings)   wear, solder fatigue & seal aging
+        │                                      │                                      │
+        └──────────────────────────────────────┼──────────────────────────────────────┘
+                                               │
+                                               ▼
+                ┌─────────────────────────────────────────────────────────────┐
+                │        【Objective Evaluation Baseline Established】          │
+                └─────────────────────────────────────────────────────────────┘
+```
+
+1. **Physical & Manufacturing Principles**: Identifies governing performance mechanisms (e.g., Heat-pump vs. condensing dryer; true GtG response vs. flicker-inducing MPRT; flat vs. conical burrs).
+2. **Published Standards & Baseline Compliance**: Verifies statutory safety requirements and quality standards, separating manufacturer slogans from baseline compliance.
+3. **Total Cost of Ownership & Long-Term Wear**: Calculates ongoing consumable costs and cross-verifies long-term defects (e.g., solder cracking, motor shaft wear, gasket degradation).
+
+---
+
+## 💡 Core Positioning & Problems Solved
+
+**Shopaholic empowers consumers with supply-chain logic, material transparency, and evidence-based decision rules.**
+
+| Common Frustrations | How Shopaholic Solves It & Value Provided |
+|---|---|
+| **Unclear needs, unsure where to start** | **Clarify First**: Identifies critical constraints (space, users, fabrics, environment) before narrowing down the pool. |
+| **Too many proprietary marketing terms** | **Engineering Teardown**: Breaks down core mechanisms in plain language to explain real differences. |
+| **Overwhelming praise, hard to find real drawbacks** | **Truthful Disclosure**: Checks teardown data and verified user reports to surface hidden shortcomings and failure modes. |
+| **Bestsellers that may not fit your specific needs** | **Counterfactual Analysis**: Explains why certain popular hits were not prioritized, clarifying exact use cases. |
+| **Cheap upfront price, but expensive consumables** | **Total Cost of Ownership (TCO)**: Estimates ongoing filter and part costs along with the likelihood of the item sitting unused. |
+
+---
+
+## 📱 Live Examples (Real-World Dialogue)
+
+### Example 1: Clarifying Incomplete Needs (Mode A: Ask Before Recommending · Coffee Machine)
+
+```text
+User       ❯ Recommend a coffee machine.
+
+Shopaholic ❯ 【Pause Before Buying: These Key Factors Directly Change the Answer】
+             
+             Based on physical extraction and maintenance workflows across machine categories:
+             1. Daily usage routine & maintenance willingness: Quick 1-minute morning caffeine fix, or willing to spend 10 minutes grinding, tamping, and cleaning portafilters? (Semi-automatic machines have high abandonment rates without dedicated routines; quick mornings favor super-automatic or capsule units).
+             2. Preferred beverage type: Mostly black coffee (Americano, cold brew) or milk drinks (Latte, Cappuccino)? (Drip or capsule handles black coffee well; quality milk drinks require dedicated steam boilers or automatic frothing systems).
+             3. Ongoing consumable cost tolerance: Are you comfortable with ¥3.5-¥5 ($0.50-$0.70) per capsule? (At 2-3 cups daily, capsules cost thousands annually, whereas whole beans in super-automatics cost ¥1-¥1.5 per cup).
+
+             Once clarified, I will narrow down the 3-4 best-matching candidates on the market.
+```
+
+### Example 2: Budget Gaming Monitor (Mode B: Deliver Recommendation · Parameters & Compromises)
+
+```text
+User       ❯ Looking for a 2K gaming monitor around $150, mostly FPS games and daily office work.
+
+Shopaholic ❯ 【Core Selection Criteria】
+             Focus on 3 practical mechanical points rather than marketing claims:
+             1. Prioritize native GtG response time: Be wary of "1ms MPRT" claims (black-frame insertion causes invisible flicker and eye fatigue);
+             2. Panel packaging & DC dimming: Look for genuine Fast-IPS panels with full-range DC dimming and hardware-level low blue light (>455nm peak);
+             3. Stand ergonomics & bandwidth: Budget models often cut costs on plastic chassis and fixed stands; check for height adjustment and DP 1.4.
+
+             【Tiered Recommendation (Anonymized)】
+             • Option A (FPS Response Priority · Approx. ¥999):
+               - Strengths: Genuine Fast-IPS tuning, ~1.5ms real GtG with minimal overshoot, hardware low blue light.
+               - Trade-offs: Mild IPS corner glow on full black screens; plastic chassis feel.
+             • Option B (Color & Ergonomics Priority · Approx. ¥1,099):
+               - Strengths: 99% sRGB with factory ΔE<2 calibration, fully adjustable ergonomic stand.
+               - Trade-offs: Slightly slower peak response than Option A; best for mixed photo editing and casual gaming.
+
+             • Why Bestselling Model X Was Not Prioritized:
+               - Advertises 240Hz, but tests reveal severe pixel overshoot/inverse ghosting on highest overdrive, combined with non-DC dimming causing visual fatigue.
+
+             【Inspection Checklist】Check for dead pixels on pure black/white screens, and verify G-Sync/FreeSync tear-free functionality.
+```
+
+### Example 3: Robot Vacuum Elimination (Mode D: Candidate Teardown · Structured Verdict)
+
+```text
+User       ❯ I am deciding between [Model A] and [Model B], both ~$350 robot vacuums. Help me eliminate one.
+
+Shopaholic ❯ 【Candidate Teardown Verdict】
+
+             | Candidate | Verdict | Engineering & Material Differences | Potential Risk |
+             |---|---|---|---|
+             | **Model A** | **Keep (Top Pick)** | Dual-sensor AI structured light obstacle avoidance + dual counter-rotating rubber roller; dock features 55°C hot air drying against mildew. | 9.8cm chassis height; may struggle with furniture gaps <10cm. |
+             | **Model B** | **Eliminate** | Advertises higher raw suction, but uses traditional bristle-rubber brush where long hair severely tangles into bearings; cold air drying leaves damp odors in humid seasons. | Base station tray is non-removable, creating dirt buildup over time. |
+
+             【Final Verdict】: Keep **Model A**. Practical satisfaction depends on anti-tangle efficiency and mold-free hot-air drying rather than theoretical suction numbers.
+```
+
+---
+
+## 🧭 Decision Workflow & 4 Output Modes
+
+**Shopaholic dynamically switches between four operational modes depending on user query clarity:**
+
+```
+                    [ Receive User Query & Context ]
+                                   │
+              ┌────────────────────┴────────────────────┐
+              ▼                                         ▼
+     【Incomplete Constraints】                【Clear Requirements】
+              │                                         │
+              ▼                                         ▼
+     Mode A: Clarify First                     Mode B: Deliver Recommendation
+     - Ask 2-5 targeted questions              - Core engineering fundamentals
+     - Explain how factors change choices      - 4-Lane cross-verification
+     - Highlight blind-buying pitfalls         - Tiered matrix + Pitfall checklist
+                                                        │
+              ┌─────────────────────────────────────────┼─────────────────────────────────────────┐
+              ▼                                                                                   ▼
+     Mode C: Category Dissuasion                                                         Mode D: Candidate Teardown
+     - Market-wide inflated pricing / transition period                                  - User provides specific model list
+     - Detail why purchasing now is unadvisable                                          - Keep / Replace / Eliminate table
+     - Suggest bridge alternatives & timing                                              - Highlight safest vs. overrated picks
+```
+
+---
+
+## 📚 12 Category Reference Checklists
+
+**Shopaholic provides pre-built material and pitfall references across 12 common categories** (`references/category-checklists.md`). For unlisted categories, the agent automatically conducts real-time web research:
+
+- 🍎 **Food, Beverages & Fresh Produce**: Freeze-drying (FD) vs. spray-drying (SD), single-cut vs. restructured meat, ingredient list cleanliness.
+- 📱 **Phones, Computers & Digital Gear**: Panel quality and dimming, sustained TDP power dissipation, SSD controller & NAND binning (TLC vs. QLC).
+- 🧊 **Major Home Appliances & HVAC**: Heat-pump drying vs. condensing heat, independent dual-cycle refrigeration, condenser coil materials, universal vs. proprietary water filter cartridges.
+- 🧹 **Cleaning & Personal Care Electronics**: Robot vacuum obstacle avoidance, wet-dry vacuum hot-air drying vs. cold air odor, anti-tangle cutting blades, hair dryer thermal control.
+- 💄 **Skincare, Cosmetics & Daily Care**: Active ingredient concentration and delivery systems, regulatory registry verification, micro-dosing detection, acid peeling tolerance warnings.
+- 🍼 **Baby Care, Toys & Child Safety**: Safety certifications and car seat standards (GB 27887 / ECE R129 i-Size), food-contact materials, multi-stage car seat sizing.
+- 🛏️ **Furniture, Bedding & Home Living**: Certified explosion-proof gas cylinders (TUV Class 4), mattress springs and eco-friendly comfort layers, bulky return freight logistics.
+- 🏃 **Outdoor, Sportswear & Bags**: Waterproof breathable membrane tech (ePTFE), midsole supercritical foaming, wet-surface outsole grip, seam tape aging.
+- 🚗 **Automotive Electronics & Gear**: Dashcam image sensors and high-temp supercapacitors, helmet safety standards, jump starter protection circuits.
+- 🐱 **Pet Food, Supplies & Smart Hardware**: Fresh meat inclusion ratio in kibble, water-electricity separation in pet fountains, anti-pinch litter box sensors.
+- 🎮 **Audio-Visual, Gaming & Peripherals**: Mechanical keyboard gasket structures and magnetic switches, optical mouse sensors, native projector resolution and real lumens.
+- 🩺 **Health Monitoring & Home Medical Devices**: Certified Class II medical device registration, measurement accuracy standards, ongoing consumable test strip costs.
+
+---
+
+## ⚖️ Compliance & Disclaimer
+
+**Shopaholic operates as an open-source analytical protocol, strictly observing statutory regulations and neutrality:**
+
+1. **Compliance & Public Information Sourcing**:
+   - Shopaholic is an open-source prompt protocol and analytical skill. **It strictly adheres to all applicable laws, regulations, and intellectual property rights**.
+   - This project does not contain proprietary or secret commercial databases. **All evaluated parameters, standards, and references are sourced exclusively from publicly accessible online materials, published national/industry standards, official manufacturer manuals, and public teardown reviews**. No automated scraping violations or unauthorized data access are conducted.
+2. **Execution Runtime & LLM Limitations**:
+   - The actual search execution, parsing, and inference are **performed autonomously by the user's host LLM (e.g., Claude, GPT, DeepSeek) and Agent runtime harness**.
+   - Due to LLM generation characteristics, search index freshness, and real-time e-commerce price changes, analyses may carry occasional discrepancies. **All outputs are provided for educational, informational, and personal consumer reference only, and do not constitute financial advice, commercial warranties, or legal guarantees**.
+3. **Strict Neutrality & Non-Commercial Nature**:
+   - This repository is purely non-profit and open-source. **It maintains zero affiliate relationships, charges zero CPS commissions, and receives zero sponsorships from any e-commerce platform, manufacturer, or distributor**.
+4. **Regulated Categories Notice**:
+   - For home medical devices, child car seats, and high-risk outdoor equipment, always prioritize guidance from licensed healthcare practitioners, certified safety manuals, and statutory inspection reports.
+
+---
+
+## Repository Structure
+
+```text
+shopaholic-skill/
+├── package.json               # Package descriptor and agent registry metadata
+├── llms.txt                   # LLM crawler entrypoint and summary
+├── README.md                  # Chinese comprehensive documentation
+├── README_EN.md               # English technical documentation
+├── LICENSE                    # MIT Open Source License
+├── bin/
+│   └── cli.js                 # Cross-platform interactive installation utility
+├── assets/
+│   └── logo.png               # Project official logo icon
+└── skills/
+    └── shopaholic/
+        ├── SKILL.md           # Master workflow specification and execution protocol
+        └── references/        # Deep-dive knowledge modules
+            ├── category-checklists.md   # 12 category standards, teardown checks & pitfalls
+            ├── evidence-and-risks.md    # Evidentiary accounting, anti-GEO & regret audits
+            └── research-protocol.md     # 4-Lane protocol & verification standards
+```
+
+---
+
+## License
+
+Distributed under the [MIT License](LICENSE).
+
+Copyright (c) 2026 StaySound4
