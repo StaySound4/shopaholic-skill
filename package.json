@@ -1,0 +1,45 @@
+{
+  "name": "pi-shopper",
+  "version": "1.0.0",
+  "description": "循证购物决策与全景行业调研顾问 - Evidence-based shopping decision, supply chain intelligence & anti-overcharge skill for AI Agents (Pi, Claude, OpenClaw).",
+  "main": "index.js",
+  "bin": {
+    "install-shopper": "./bin/cli.js"
+  },
+  "keywords": [
+    "pi-package",
+    "pi-skill",
+    "agent-skill",
+    "claude-skill",
+    "openclaw-skill",
+    "mcp",
+    "shopping-advisor",
+    "china-ecommerce",
+    "product-research",
+    "循证导购",
+    "购物决策",
+    "国标溯源",
+    "防翻车"
+  ],
+  "author": "StaySound4",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StaySound4/pi-shopper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/StaySound4/pi-shopper/issues"
+  },
+  "homepage": "https://github.com/StaySound4/pi-shopper#readme",
+  "pi": {
+    "skills": [
+      "skills/shopper"
+    ]
+  },
+  "files": [
+    "skills",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ]
+}
