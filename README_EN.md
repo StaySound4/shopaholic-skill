@@ -39,7 +39,7 @@
 
 ## ⚡ Quick Installation Guide
 
-**Shopaholic supports instant natural-language installation and one-line CLI setup across all major agent environments.**
+**Shopaholic supports natural-language installation, repo-level local integration, and global multi-agent configurations.**
 
 ### Method 1: Natural Language Prompt (Recommended 🌟)
 
@@ -49,26 +49,42 @@ Open any AI client you are using (Claude Code, ChatGPT/Codex, Cursor, Pi Agent, 
 
 ---
 
-### Method 2: One-Line Terminal Commands
+### Method 2: Repo-Level / Project-Level Installation (Team Collaboration & VCS 📦)
+
+If you want to maintain the skill directly inside your project repository for team sharing and version control:
+
+```bash
+# Option 1: NPX Repo Mode (automatically injects to .agents/skills/shopaholic or .claude/skills/shopaholic)
+npx StaySound4/shopaholic-skill --repo
+
+# Option 2: Clone directly into current repo
+git clone https://github.com/StaySound4/shopaholic-skill.git .agents/skills/shopaholic
+# Or for Claude Code repo configuration
+git clone https://github.com/StaySound4/shopaholic-skill.git .claude/skills/shopaholic
+```
+
+---
+
+### Method 3: Global Multi-Runtime Setup (Global User Profile 🌐)
 
 <details open>
 <summary><b>Click to expand / collapse CLI commands</b></summary>
 
 ```bash
+# Universal NPX Cross-Platform Installer (automatically detects and syncs across all global agent directories)
+npx StaySound4/shopaholic-skill
+
 # Pi Coding Agent
 pi install git:StaySound4/shopaholic-skill
 
-# Claude Code
+# Claude Code (Global)
 git clone https://github.com/StaySound4/shopaholic-skill.git ~/.claude/skills/shopaholic
 
-# OpenAI Codex / ChatGPT Agent
-git clone https://github.com/StaySound4/shopaholic-skill.git .agents/skills/shopaholic
+# OpenAI Codex / ChatGPT Agent (Global User Profile)
+git clone https://github.com/StaySound4/shopaholic-skill.git ~/.agents/skills/shopaholic
 
 # OpenClaw / ClawHub
 clawhub install shopaholic
-
-# Universal NPX Installer
-npx StaySound4/shopaholic-skill
 ```
 </details>
 

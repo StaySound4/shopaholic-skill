@@ -39,7 +39,7 @@
 
 ## ⚡ 极简安装指南
 
-**Shopaholic 支持自然语言一句话快速安装与多平台一行命令配置。**
+**Shopaholic 支持自然语言一句话快速安装、全局配置与仓库级（Project/Repo-Level）本地集成。**
 
 ### 方式一：一句话直接对你的 AI 助手说（最推荐 🌟）
 
@@ -49,26 +49,42 @@
 
 ---
 
-### 方式二：常见平台一行命令配置
+### 方式二：仓库级 / 项目级本地安装（团队协同与工程版本控制 📦）
 
-<details open>
-<summary><b>点击展开 / 折叠各平台安装命令</b></summary>
+如果你希望将技能直接保存在当前 Git 仓库中供团队成员或项目内 AI 助手随时调用：
 
 ```bash
+# 方式 1: 使用 NPX 自动注入到当前项目仓库 (.agents/skills/shopaholic 或 .claude/skills/shopaholic)
+npx StaySound4/shopaholic-skill --repo
+
+# 方式 2: 使用 Git Submodule 或直接克隆到当前仓库
+git clone https://github.com/StaySound4/shopaholic-skill.git .agents/skills/shopaholic
+# 或适用于 Claude Code 项目级配置
+git clone https://github.com/StaySound4/shopaholic-skill.git .claude/skills/shopaholic
+```
+
+---
+
+### 方式三：全局环境一行命令配置（多平台全局生效 🌐）
+
+<details open>
+<summary><b>点击展开 / 折叠各平台全局安装命令</b></summary>
+
+```bash
+# 通用 NPX 跨平台一键安装器（自动检测全局并同步到所有常见 Agent 目录）
+npx StaySound4/shopaholic-skill
+
 # Pi Coding Agent
 pi install git:StaySound4/shopaholic-skill
 
-# Claude Code
+# Claude Code (全局)
 git clone https://github.com/StaySound4/shopaholic-skill.git ~/.claude/skills/shopaholic
 
-# OpenAI Codex / ChatGPT Agent
-git clone https://github.com/StaySound4/shopaholic-skill.git .agents/skills/shopaholic
+# OpenAI Codex / ChatGPT Agent (用户主目录)
+git clone https://github.com/StaySound4/shopaholic-skill.git ~/.agents/skills/shopaholic
 
 # OpenClaw / ClawHub
 clawhub install shopaholic
-
-# 通用 NPX 跨平台一键安装器
-npx StaySound4/shopaholic-skill
 ```
 </details>
 
