@@ -295,10 +295,10 @@ shopaholic-skill/
 
 ### v0.9.5 (2026-08-28)
 
-- Added modular category playbooks (coffee / HiFi audio / display monitors / infant gear) with progressive loading and strict context isolation
+- Added modular category playbooks (coffee / HiFi audio / display monitors / infant gear) with on-demand progressive loading and strict context isolation
 - Added Claimed/Measured Deviation (CMD) asymmetric audit: independent measured deviation rates and fidelity factors, one-vote veto on severe mislabeling
-- Completed the engineering verification framework: all 40 atomic engineering tickets landed, covering evidence ledger, source routing, safety adjudication, price semantics, sensitivity analysis, release gates, and evidence dossier
-- Hardened safety boundaries: retrieved content treated strictly as untrusted evidence data, prompt-injection payloads neutralized, explicit degraded modes on source/tool unavailability
+- Expanded evidence ledgers: silent hardware revision tracking, price-water dehydration, used/discontinued-item verification, return friction & total cost of ownership
+- Hardened safety boundaries: retrieved content treated strictly as untrusted evidence data, prompt-injection payloads neutralized; explicit degraded modes on source/tool unavailability; stale standards auto-corrected with confidence downgrades
 
 ---
 
