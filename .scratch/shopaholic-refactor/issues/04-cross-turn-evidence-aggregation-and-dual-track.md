@@ -4,9 +4,9 @@
 
 **Blocked by:** 03 — 三阶段认知漏斗与双轮递进质询状态机
 
-**Status:** ready-for-agent
+**Status:** closed
 
-- [ ] 在 `skills/shopaholic/references/research-protocol.md` 与 `evidence-and-risks.md` 中确立跨轮次证据融合引擎，全量沉淀 Stage 1 与 Stage 2 候选
-- [ ] A 档成熟池与 B 档高潜新品池平行呈现，并在 B 档下方置顶输出【成熟度与售后妥协声明】
-- [ ] 针对支持二手的场景，在对比矩阵中自适应呈现优质二手行情与渠道避坑指南（防翻新/防暗病）
-- [ ] 严格执行致命缺陷一票否决与商业软广/返利外链脱水过滤
+- [x] 在 `skills/shopaholic/references/research-protocol.md` 与 `evidence-and-risks.md` 中确立跨轮次证据融合引擎，全量沉淀 Stage 1 与 Stage 2 候选
+- [x] A 档成熟池与 B 档高潜新品池平行呈现，并在 B 档下方置顶输出【成熟度与售后妥协声明】
+- [x] 针对支持二手的场景，在对比矩阵中自适应呈现优质二手行情与渠道避坑指南（防翻新/防暗病）
+- [x] 严格执行致命缺陷一票否决与商业软广/返利外链脱水过滤
