@@ -113,8 +113,9 @@ Unlike generic AI assistants that rely on vague training memory, Shopaholic auto
 | **Unclear needs, unsure where to start** | **Clarify First**: Identifies critical constraints (space, users, fabrics, environment) before narrowing down the pool. |
 | **Too many proprietary marketing terms** | **Engineering Teardown**: Breaks down core mechanisms in plain language to explain real differences. |
 | **Overwhelming praise, hard to find real drawbacks** | **Truthful Disclosure**: Checks teardown data and verified user reports to surface hidden shortcomings and failure modes. |
+| **Niche/untested items promoted due to lack of bad reviews** | **Anti-Survivor Bias**: Imposes market verification tiers, unverified penalties, and single-incident fatal defect alerts. |
 | **Bestsellers that may not fit your specific needs** | **Counterfactual Analysis**: Explains why certain popular hits were not prioritized, clarifying exact use cases. |
-| **Cheap upfront price, but expensive consumables** | **Total Cost of Ownership (TCO)**: Estimates ongoing filter and part costs along with the likelihood of the item sitting unused. |
+| **Cheap upfront price, but costly consumables / poor warranty** | **TCO & Channel Audit**: Evaluates 4-tier warranty channels, proprietary parts discontinuation risks, and liquidity depreciation. |
 
 ---
 
