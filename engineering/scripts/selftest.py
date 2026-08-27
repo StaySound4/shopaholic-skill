@@ -56,6 +56,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_22_source_routing.py')])
         # 1v ticket 23 commercial relationships and sample provenance test
         run([sys.executable,str(ROOT/'scripts/test_ticket_23_commercial_provenance.py')])
+        # 1w ticket 24 pareto first ranking and explicit preference weights test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_24_pareto.py')])
         # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
