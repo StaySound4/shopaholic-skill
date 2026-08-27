@@ -68,6 +68,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_21_legacy_contract.py')])
         # 1ab ticket 27 modular category knowledge playbooks test
         run([sys.executable,str(ROOT/'scripts/test_ticket_27_playbooks.py')])
+        # 1ac ticket 28 truth-first correction protocol test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_28_truth_correction.py')])
         # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
