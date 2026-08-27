@@ -11,7 +11,7 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-green)](https://agentskills.io)
 [![skills.sh](https://img.shields.io/badge/skills.sh-Compatible-blue)](https://skills.sh)
 [![Multi-Runtime](https://img.shields.io/badge/Runtime-Claude%20Code%20·%20Codex%20·%20Cursor%20·%20Pi%20·%20OpenClaw-blueviolet)](#-quick-installation-guide)
-[![Version](https://img.shields.io/badge/Release-v0.9.0-orange)](https://github.com/StaySound4/shopaholic-skill/releases/tag/v0.9.0)
+[![Version](https://img.shields.io/badge/Release-v9.1.0-orange)](https://github.com/StaySound4/shopaholic-skill/releases/tag/v9.1.0)
 
 <br>
 
