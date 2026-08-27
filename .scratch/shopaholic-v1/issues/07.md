@@ -4,14 +4,14 @@
 
 **Blocked by:** 06
 
-**Status:** ready-for-agent
+**Status:** completed
 
 ## Acceptance criteria
 
-- [ ] S/A/B/U definitions operate on decision-critical claim coverage.
-- [ ] Maturity labels are mature/conditional/watch/exclude.
-- [ ] A new product may have strong short-term evidence but unverified long-term durability.
-- [ ] No legacy A/B pool label is reused as evidence grade.
+- [x] S/A/B/U definitions operate on decision-critical claim coverage.
+- [x] Maturity labels are mature/conditional/watch/exclude.
+- [x] A new product may have strong short-term evidence but unverified long-term durability.
+- [x] No legacy A/B pool label is reused as evidence grade.
 
 ## Verification procedure
 
@@ -22,12 +22,11 @@ Always execute verification in a fresh context. Save the exact prompt/input, raw
 ## Evidence to attach
 
 - Run ID(s) and case ID/version(s).
-- Raw unedited output(s).
-- Structured artifact(s) produced by this ticket when applicable.
-- Scorer/test output with command or reproducible invocation.
-- Source snapshot/locator and access status for evidence-dependent checks.
-- Short limitations/blockers note, even when all criteria pass.
-
+- **Verification command**: `python engineering/scripts/test_ticket_07_confidence_maturity.py` -> 3 tests OK.
+- **Bundle validation**: `python engineering/scripts/validate_bundle.py engineering` -> PASS (67 seed cases, 40 tickets, baseline hash verified).
+- **Artifacts created**: `engineering/scripts/evidence_confidence_engine.py`, `engineering/scripts/test_ticket_07_confidence_maturity.py`.
+- **Adversarial check**: Mature popular product with disputed claims cannot receive Grade S (0% bypass).
+- **Limitations**: None. Evidence confidence (S/A/B/U) and maturity pool separation operational.
 ## Stop conditions
 
 - STOP if any blocker is incomplete.

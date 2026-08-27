@@ -26,6 +26,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_05_claim_ledger.py')])
         # 1g ticket 06 claim-specific evidence roles test
         run([sys.executable,str(ROOT/'scripts/test_ticket_06_evidence_roles.py')])
+        # 1h ticket 07 evidence confidence and maturity pools test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_07_confidence_maturity.py')])
         # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
