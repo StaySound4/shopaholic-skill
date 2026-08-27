@@ -4,10 +4,10 @@
 
 **Blocked by:** 02 — 时序解耦的两阶段偏好诱导与智能视角自适应架构
 
-**Status:** ready-for-agent
+**Status:** completed
 
-- [ ] 在 `skills/shopaholic/SKILL.md` 与 `skills/shopaholic/references/evidence-and-risks.md` 中定义 A/B 双轨准入标准：
+- [x] 在 `skills/shopaholic/SKILL.md` 与 `skills/shopaholic/references/evidence-and-risks.md` 中定义 A/B 双轨准入标准：
   - 【A 档：大样本成熟验证池】（3~5 款）：上市时间长、销量大、具备大样本用户追评与独立拆解；
   - 【B 档：高潜能·硬核新品/黑马观察池】（3~5 款）：核心硬件（BOM）完全白盒化公开、经 L2 级独立拆解做工扎实；
-- [ ] 在 B 档表格下方强制置顶输出【成熟度与售后妥协声明】，完整披露早期固件算法迭代、大样本耐用度观察期与售后通路局限；
-- [ ] 确立致命缺陷一票否决规则（一级致命缺陷全网 1 起即淘汰，二级体验缺陷主流款 $\ge 3$ 起判定为通病）。
+- [x] 在 B 档表格下方强制置顶输出【成熟度与售后妥协声明】，完整披露早期固件算法迭代、大样本耐用度观察期与售后通路局限；
+- [x] 确立致命缺陷一票否决规则（一级致命缺陷全网 1 起即淘汰，二级体验缺陷主流款 $\ge 3$ 起判定为通病）。
