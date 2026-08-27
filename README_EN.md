@@ -110,7 +110,7 @@ Unlike generic AI assistants that rely on outdated training memory and generate 
 
 | Common Frustrations | How Shopaholic Solves It & Value Provided |
 |---|---|
-| **Unclear/conflicting needs, prone to category elimination** | **Two-Phase Elicitation**: Extracts hard constraints & soft tastes in Phase 1; lets user choose delivery viewpoints in Phase 2. |
+| **Unclear/conflicting needs, prone to category elimination** | **Decoupled Two-Phase State Machine**: Turn 1 extracts scenario & pain points cleanly (no meta-formatting); Turn 2 echoes profile & adapts viewpoints automatically. |
 | **Model claims a product does not exist (Hallucinations)** | **Defensive Search**: Mandatory multi-angle temporal retrieval across brand catalogs to prevent outdated assertions. |
 | **New high-spec flagships unfairly downgraded** | **Dual-Track Matrix**: Parallel A-tier and B-tier tables with BOM whitebox admission criteria. |
 | **AI sycophantically reverses stance after user pushback** | **Anti-Sycophancy Protocol**: Neutral fact intake and independent teardown verification without excessive apologies. |
@@ -188,11 +188,10 @@ Shopaholic ❯ 【Candidate Teardown Verdict】
      【Incomplete Constraints】                【Clear Requirements】
               │                                         │
               ▼                                         ▼
-     Mode A: Clarify First                     Mode B: Deliver Recommendation
-     - Ask 2-5 targeted questions              - Core engineering fundamentals
-     - Explain how factors change choices      - 4-Lane cross-verification
-     - Highlight blind-buying pitfalls         - Tiered matrix + Pitfall checklist
-                                                        │
+     Mode A: Decoupled 2-Phase Flow            Mode B: Deliver Recommendation
+     - Turn 1: 2-3 pure scenario questions     - Core engineering fundamentals
+     - Explains trade-offs & factor impact     - 4-Lane cross-verification
+     - Turn 2: Echoes profile & adapts view    - Tiered matrix + Pitfall checklist
               ┌─────────────────────────────────────────┼─────────────────────────────────────────┐
               ▼                                                                                   ▼
      Mode C: Category Dissuasion                                                         Mode D: Candidate Teardown
