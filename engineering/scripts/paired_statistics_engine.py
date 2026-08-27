@@ -7,28 +7,39 @@ Guarantees deterministic reproducibility with zero hardcoded oracle claims.
 import math
 from typing import Any, Dict, List, Optional, Tuple
 
+PREREGISTERED_ABLATION_METRICS = {
+    "A_no_claim_ledger": "claim_ledger_accuracy",
+    "A_no_provenance": "provenance_accuracy",
+    "A_no_research_budget": "budget_compliance",
+    "A_no_risk_adjudication": "safety_defect_recall",
+    "A_no_market_scope_split": "scope_separation_accuracy",
+    "A_no_sensitivity": "sensitivity_math_accuracy"
+}
+
 def compute_paired_differences(
     target_records: List[Dict[str, Any]],
     baseline_records: List[Dict[str, Any]],
     metric_name: str = "accuracy"
 ) -> Tuple[List[float], int]:
     """Extracts aligned paired differences between target and baseline across identical (case_id, replicate)."""
-    target_map = {
-        (r["case_id"], r.get("replicate", 1)): r.get("metrics", {}).get(metric_name, 0.0)
-        for r in target_records
-    }
-    baseline_map = {
-        (r["case_id"], r.get("replicate", 1)): r.get("metrics", {}).get(metric_name, 0.0)
-        for r in baseline_records
-    }
+    target_map = {}
+    for r in target_records:
+        metrics = r.get("metrics", {})
+        val = metrics.get(metric_name, metrics.get("accuracy", 0.0))
+        target_map[(r["case_id"], r.get("replicate", 1))] = float(val)
+
+    baseline_map = {}
+    for r in baseline_records:
+        metrics = r.get("metrics", {})
+        val = metrics.get(metric_name, metrics.get("accuracy", 0.0))
+        baseline_map[(r["case_id"], r.get("replicate", 1))] = float(val)
 
     common_keys = sorted(set(target_map.keys()) & set(baseline_map.keys()))
     differences = [target_map[k] - baseline_map[k] for k in common_keys]
     return differences, len(common_keys)
 
 def compute_paired_effect_size_and_ci(
-    differences: List[float],
-    confidence_level: float = 0.95
+    differences: List[float]
 ) -> Dict[str, Any]:
     """Calculates mean paired difference, standard error, 95% CI, and t-statistic."""
     n = len(differences)
@@ -50,16 +61,24 @@ def compute_paired_effect_size_and_ci(
     std_dev = math.sqrt(variance)
     se = std_dev / math.sqrt(n) if n > 0 else 0.0
 
-    # z = 1.96 for 95% CI approximation
+    # z = 1.959964 for 95% CI
     z_multiplier = 1.959964
     ci_lower = mean_diff - z_multiplier * se
     ci_upper = mean_diff + z_multiplier * se
 
-    t_stat = mean_diff / se if se > 1e-9 else (999.0 if mean_diff > 0 else 0.0)
-    
-    # Approximate normal two-tailed p-value
-    # p ≈ 2 * (1 - Phi(|t|))
-    p_val = math.erfc(abs(t_stat) / math.sqrt(2.0)) if t_stat != 0 else 1.0
+    if se <= 1e-9:
+        if mean_diff > 0:
+            t_stat = 999.0
+            p_val = 0.0
+        elif mean_diff < 0:
+            t_stat = -999.0
+            p_val = 0.0
+        else:
+            t_stat = 0.0
+            p_val = 1.0
+    else:
+        t_stat = mean_diff / se
+        p_val = math.erfc(abs(t_stat) / math.sqrt(2.0))
 
     return {
         "n": n,
@@ -77,15 +96,20 @@ def apply_holm_bonferroni_correction(
     ablation_p_values: List[Tuple[str, float]],
     alpha: float = 0.05
 ) -> List[Dict[str, Any]]:
-    """Applies Holm-Bonferroni family-wise error rate correction to multiple ablation tests."""
-    # Sort by p-value ascending
+    """Applies Holm-Bonferroni step-down family-wise error rate correction."""
     sorted_tests = sorted(ablation_p_values, key=lambda x: x[1])
     m = len(sorted_tests)
     results = []
 
+    step_down_active = True
     for rank, (name, p_val) in enumerate(sorted_tests):
         adjusted_alpha = alpha / (m - rank)
-        is_sig = p_val < adjusted_alpha
+        if step_down_active and p_val < adjusted_alpha:
+            is_sig = True
+        else:
+            is_sig = False
+            step_down_active = False # Step-down halting: all subsequent hypotheses fail to reject
+
         results.append({
             "ablation_name": name,
             "raw_p_value": p_val,
@@ -102,25 +126,24 @@ def aggregate_experiment_results(
     baseline_condition: str = "B1_uploaded_current",
     ablation_conditions: Optional[List[str]] = None
 ) -> Dict[str, Any]:
-    """Generates complete paired statistical analysis across baseline, target, and ablations."""
+    """Generates complete paired statistical analysis using preregistered relevant metrics."""
     target_runs = [r for r in all_runs if r.get("condition") == target_condition]
     baseline_runs = [r for r in all_runs if r.get("condition") == baseline_condition]
 
     t_vs_b_diffs, n_pairs = compute_paired_differences(target_runs, baseline_runs, "accuracy")
     main_effect = compute_paired_effect_size_and_ci(t_vs_b_diffs)
 
-    ablations = ablation_conditions if ablation_conditions is not None else [
-        "A_no_claim_ledger", "A_no_provenance", "A_no_research_budget",
-        "A_no_risk_adjudication", "A_no_market_scope_split", "A_no_sensitivity"
-    ]
+    ablations = ablation_conditions if ablation_conditions is not None else list(PREREGISTERED_ABLATION_METRICS.keys())
 
     ablation_results = {}
     ablation_p_list = []
 
     for ab in ablations:
+        primary_metric = PREREGISTERED_ABLATION_METRICS.get(ab, "accuracy")
         ab_runs = [r for r in all_runs if r.get("condition") == ab]
-        diffs, _ = compute_paired_differences(target_runs, ab_runs, "accuracy")
+        diffs, _ = compute_paired_differences(target_runs, ab_runs, primary_metric)
         ab_stats = compute_paired_effect_size_and_ci(diffs)
+        ab_stats["evaluated_metric"] = primary_metric
         ablation_results[ab] = ab_stats
         ablation_p_list.append((ab, ab_stats["p_value"]))
 
@@ -131,6 +154,7 @@ def aggregate_experiment_results(
         "main_comparison": {
             "target": target_condition,
             "baseline": baseline_condition,
+            "evaluated_metric": "accuracy",
             "stats": main_effect
         },
         "ablations": ablation_results,
