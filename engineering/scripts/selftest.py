@@ -38,6 +38,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_11_budget.py')])
         # 1m ticket 12 marginal information stop rule and dynamic candidate test
         run([sys.executable,str(ROOT/'scripts/test_ticket_12_stop_rule.py')])
+        # 1n ticket 13 scoped safety signal adjudication test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_13_safety.py')])
         # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
