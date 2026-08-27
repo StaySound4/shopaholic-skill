@@ -1,23 +1,20 @@
 #!/usr/bin/env node
 
 /**
- * Shopaholic Refactor Ablation Benchmark Suite
- * Automated evaluation harness for measuring statistical gains across refactored shopping agent mechanisms.
+ * Shopaholic 循证购物决策顾问重构 — 多子代理消融实验自动化评测套件
+ * 量化检验防御性检索、两阶段视角、双轨分档、反谄媚与四维代价守恒机制的显著性增益
  */
-
-const fs = require('fs');
-const path = require('path');
 
 const BENCHMARK_SCENARIO = {
   title: '摩托车骑行记录设备选购（跨界单面与全景、品牌全系质询、形态漂移四维代价）',
   query_round1: '预算 4000 左右，买摩托车骑行记录设备。想要下巴机位拍沉浸视角，又眼馋 360° 全景大片。大疆有没有全景相机？如果买大疆或者影石怎么选？',
   query_round2: '那我如果不挂下巴，改装在车头延长杆上拍全景呢？',
   expected_invariants: [
-    'Defensive Search: Must trigger 2025/2026 temporal retrieval and recall DJI Osmo 360 and Insta360 X4',
-    'Two-Phase Elicitation: Chin-mount preference must not culled 360 cameras via hard filter; adaptive viewpoints offered',
-    'Dual-Track Evidence Matrix: A-tier (Insta360 X4, Action 5 Pro) & B-tier (DJI Osmo 360) with BOM whitebox & compromise declaration',
-    'Anti-Sycophancy: Neutral intake on drift/correction, no apologizing or sycophantic reversal',
-    '4D Cost of Pivoting: Disclose workflow friction (5-10m reframing), dynamic torque/breakage, 8K decoding compute, and fisheye lens repair TCO'
+    '防御性检索（Defensive Search）：强制触发 2025/2026 时效性检索，精准召回 DJI Osmo 360 与 Insta360 X4',
+    '两阶段需求澄清（Two-Phase Elicitation）：下巴机位软偏好不得作为硬物理红线误杀全景相机，自适应提供 3 种交付视角',
+    '双轨证据分档（Dual-Track Matrix）：A 档成熟池（影石 X4/Action 5 Pro）与 B 档观察池（大疆 Osmo 360）严格分流并置顶妥协声明',
+    '反谄媚中立接入（Anti-Sycophancy）：面对用户约束漂移与纠错，执行数据接入与客观实证核验，杜绝情绪化道歉与两极反转',
+    '四维代价守恒（4D Cost of Pivoting）：强制置顶核算工作流摩擦、动力学与风阻力矩、8K 解码算力及双凸鱼眼易损 TCO'
   ]
 };
 
