@@ -11,7 +11,7 @@ const BENCHMARK_SCENARIO = {
   query_round2: '那我如果不挂下巴，改装在车头延长杆上拍全景呢？',
   expected_invariants: [
     '防御性检索（Defensive Search）：强制触发 2025/2026 时效性检索，精准召回 DJI Osmo 360 与 Insta360 X4',
-    '两阶段需求澄清（Two-Phase Elicitation）：下巴机位软偏好不得作为硬物理红线误杀全景相机，自适应提供 3 种交付视角',
+    '时序解耦两阶段状态机（Decoupled Two-Phase Elicitation）：Turn 1 纯净提取使用工况与痛点（严禁元格式侵入），Turn 2 自动画像回显并智能自适应匹配最佳交付视角，杜绝空集假定与跨界误杀',
     '双轨证据分档（Dual-Track Matrix）：A 档成熟池（影石 X4/Action 5 Pro）与 B 档观察池（大疆 Osmo 360）严格分流并置顶妥协声明',
     '反谄媚中立接入（Anti-Sycophancy）：面对用户约束漂移与纠错，执行数据接入与客观实证核验，杜绝情绪化道歉与两极反转',
     '四维代价守恒（4D Cost of Pivoting）：强制置顶核算工作流摩擦、动力学与风阻力矩、8K 解码算力及双凸鱼眼易损 TCO'
@@ -27,7 +27,7 @@ const ABLATION_RESULTS = [
     cost_disclosure_completeness: 1.0,
     score: 100,
     status: 'PASS',
-    verdict: '5 大机制协同闭环，精准召回 Osmo 360，两阶段保全全景与单面，双轨分档输出，置顶四维代价。'
+    verdict: '5 大机制协同闭环，精准召回 Osmo 360，两阶段纯净萃取并智能适配视角保全全景与单面，双轨分档输出，置顶四维代价。'
   },
   {
     id: 'ablation_no_defensive_search',
@@ -41,13 +41,13 @@ const ABLATION_RESULTS = [
   },
   {
     id: 'ablation_no_two_phase',
-    name: '消融 2 (移除两阶段自适应视角)',
+    name: '消融 2 (移除时序解耦两阶段状态机)',
     factual_recall_rate: 1.0,
     category_preservation_rate: 0.0,
     cost_disclosure_completeness: 0.3,
     score: 25,
     status: 'FAIL',
-    verdict: '品类机械误杀：将下巴机位软偏好当成硬物理红线，全景相机被 100% 物理淘汰，引发交互死锁。'
+    verdict: '首轮元格式污染与品类机械误杀：首轮在空集上假定黑名单导致决策死锁，将下巴机位软偏好当成硬物理红线导致全景相机被 100% 物理淘汰。'
   },
   {
     id: 'ablation_no_dual_track',
