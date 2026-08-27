@@ -46,6 +46,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_15_round1.py')])
         # 1q ticket 16 adaptive search-informed round 2 test
         run([sys.executable,str(ROOT/'scripts/test_ticket_16_round2.py')])
+        # 1r ticket 17 category-aware used goods and EOL checklist test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_17_used_goods.py')])
         # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
