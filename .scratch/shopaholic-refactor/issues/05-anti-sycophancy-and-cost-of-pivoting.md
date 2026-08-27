@@ -4,8 +4,8 @@
 
 **Blocked by:** 04 — 跨轮次深度证据聚合与双轨决策矩阵
 
-**Status:** ready-for-agent
+**Status:** closed
 
-- [ ] 在 `skills/shopaholic/SKILL.md` 中强化反谄媚事实接入规程（中立接入 -> 独立取证 -> 跑通矩阵 -> 客观评判，杜绝道歉吹捧）
-- [ ] 强化【形态跃迁四维代价守恒定律 (Cost of Pivoting)】，强制置顶核算工作流摩擦、动力学安全、算力解码与易损 TCO 四维新增代价
-- [ ] 同步更新 `references/category-checklists.md` 中的第 13 节四维代价速查表
+- [x] 在 `skills/shopaholic/SKILL.md` 中强化反谄媚事实接入规程（中立接入 -> 独立取证 -> 跑通矩阵 -> 客观评判，杜绝道歉吹捧）
+- [x] 强化【形态跃迁四维代价守恒定律 (Cost of Pivoting)】，强制置顶核算工作流摩擦、动力学安全、算力解码与易损 TCO 四维新增代价
+- [x] 同步更新 `references/category-checklists.md` 中的第 13 节四维代价速查表
