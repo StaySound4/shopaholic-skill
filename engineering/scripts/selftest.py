@@ -34,6 +34,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_09_provenance.py')])
         # 1k ticket 10 origin and temporal semantics test
         run([sys.executable,str(ROOT/'scripts/test_ticket_10_origin_temporal.py')])
+        # 1l ticket 11 research budget selection test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_11_budget.py')])
         # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
