@@ -92,6 +92,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_38_category_governance.py')])
         # 1an ticket 39 cross-runtime model regression matrix test
         run([sys.executable,str(ROOT/'scripts/test_ticket_39_runtime_regression.py')])
+        # 1ao ticket 40 evidence dossier and claim traceability test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_40_evidence_dossier.py')])
         # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
