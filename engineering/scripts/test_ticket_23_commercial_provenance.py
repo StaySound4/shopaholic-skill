@@ -16,8 +16,8 @@ class TestTicket23CommercialProvenance(unittest.TestCase):
     def test_01_transparent_sponsored_measurement_admissible(self):
         """Pass path: Manufacturer loaner with transparent test method is accepted with bias disclosure."""
         source = {
-            "commercial_relationship": "brand_loaner_unit",
-            "sample_provenance": "manufacturer_cherry_picked_loaner",
+            "commercial_relationships": ["loaner"],
+            "sample_provenance": "manufacturer_supplied",
             "is_methodology_transparent": True
         }
         res = adjudicate_evidence_with_commercial_context(
@@ -27,13 +27,13 @@ class TestTicket23CommercialProvenance(unittest.TestCase):
         )
         self.assertTrue(res["admissible"])
         self.assertEqual(res["status"], "verified_with_commercial_caveat")
-        self.assertIn("commercial tag", res["bias_disclosure"])
+        self.assertIn("commercial tags", res["bias_disclosure"])
 
     def test_02_sponsored_source_cannot_prove_comparative_superiority_alone(self):
         """Pass path: Sponsored source alone cannot establish comparative durability over rivals."""
         source = {
-            "commercial_relationship": "sponsored_paid",
-            "sample_provenance": "pr_review_unit",
+            "commercial_relationships": ["sponsored", "advertising"],
+            "sample_provenance": "loaner",
             "is_methodology_transparent": False
         }
         res = adjudicate_evidence_with_commercial_context(
@@ -49,13 +49,13 @@ class TestTicket23CommercialProvenance(unittest.TestCase):
     def test_03_multi_source_conflict_explicitly_preserved(self):
         """Pass path: Commercial claim conflicting with independent retail sample triggers conflict_disputed."""
         commercial_source = {
-            "commercial_relationship": "brand_official",
-            "sample_provenance": "manufacturer_cherry_picked_loaner",
+            "commercial_relationships": ["brand_owned"],
+            "sample_provenance": "manufacturer_supplied",
             "is_methodology_transparent": True
         }
         independent_source = {
-            "commercial_relationship": "self_purchased_retail",
-            "sample_provenance": "retail_store_anonymously_bought",
+            "commercial_relationships": ["unknown"],
+            "sample_provenance": "self_purchased",
             "measured_value": 720.0
         }
         res = adjudicate_evidence_with_commercial_context(
@@ -71,8 +71,8 @@ class TestTicket23CommercialProvenance(unittest.TestCase):
     def test_04_adversarial_affiliate_flag_cannot_erase_reproducible_fact(self):
         """Adversarial path: Affiliate flag must NOT erase an independently reproducible measured fact."""
         affiliate_source = {
-            "commercial_relationship": "affiliate_commission",
-            "sample_provenance": "retail_store_anonymously_bought",
+            "commercial_relationships": ["affiliate"],
+            "sample_provenance": "self_purchased",
             "is_methodology_transparent": True
         }
         res = adjudicate_evidence_with_commercial_context(
