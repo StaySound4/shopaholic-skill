@@ -23,7 +23,7 @@ KNOWN_STANDARDS_REGISTRY = {
 
 def resolve_dynamic_query_year(query_template: str, current_year: Optional[int] = None) -> str:
     """Replaces hardcoded temporal year tokens with runtime year."""
-    year = current_year if current_year is not None else datetime.datetime.now().year
+    year = current_year if current_year is not None else datetime.date.today().year
     return query_template.replace("{{CURRENT_YEAR}}", str(year)).replace("{year}", str(year))
 
 def audit_standard_citation(
@@ -71,10 +71,10 @@ def evaluate_reference_freshness(
     reference_id: str,
     published_date_str: str,
     is_timeless_physics: bool = False,
-    current_date_str: str = "2026-08-28",
+    current_date_str: Optional[str] = None,
     ttl_days: int = 180
 ) -> Dict[str, Any]:
-    """Evaluates reference age; timeless physics remain undated and valid."""
+    """Evaluates reference age dynamically; timeless physics remain undated and valid."""
     if is_timeless_physics:
         return {
             "reference_id": reference_id,
@@ -84,7 +84,7 @@ def evaluate_reference_freshness(
         }
 
     pub_date = datetime.date.fromisoformat(published_date_str)
-    cur_date = datetime.date.fromisoformat(current_date_str)
+    cur_date = datetime.date.fromisoformat(current_date_str) if current_date_str else datetime.date.today()
     age_days = (cur_date - pub_date).days
 
     if age_days > ttl_days:
