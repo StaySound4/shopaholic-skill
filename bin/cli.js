@@ -25,37 +25,48 @@ function copyDir(src, dest) {
   }
 }
 
-const globalRoots = userHome ? [
-  path.join(userHome, '.agents', 'skills'),
-  path.join(userHome, '.claude', 'skills'),
-  path.join(userHome, '.omp', 'skills'),
-  path.join(userHome, '.omp', 'agent', 'skills'),
-  path.join(userHome, '.pi', 'skills'),
-  path.join(userHome, '.pi', 'agent', 'skills'),
-  path.join(userHome, '.codex', 'skills')
-] : [];
-
-const repoRoots = [
-  path.join(cwd, '.agents', 'skills'),
-  path.join(cwd, '.claude', 'skills'),
-  path.join(cwd, 'skills')
+const RUNTIME_REL_PATHS = [
+  ['.agents', 'skills'],
+  ['.claude', 'skills'],
+  ['.omp', 'skills'],
+  ['.omp', 'agent', 'skills'],
+  ['.pi', 'skills'],
+  ['.pi', 'agent', 'skills'],
+  ['.codex', 'skills']
 ];
+
+const globalRoots = userHome ? RUNTIME_REL_PATHS.map(p => path.join(userHome, ...p)) : [];
+
+function getAdaptiveRepoRoots() {
+  const roots = [];
+  // Detect config markers in workspace
+  const hasClaude = fs.existsSync(path.join(cwd, '.claude')) || fs.existsSync(path.join(cwd, 'claude.json'));
+  const hasOmp = fs.existsSync(path.join(cwd, '.omp')) || fs.existsSync(path.join(cwd, 'omp.json'));
+  const hasAgents = fs.existsSync(path.join(cwd, '.agents')) || fs.existsSync(path.join(cwd, '.git')) || fs.existsSync(path.join(cwd, 'package.json'));
+
+  if (hasAgents) roots.push(path.join(cwd, '.agents', 'skills'));
+  if (hasClaude) roots.push(path.join(cwd, '.claude', 'skills'));
+  if (hasOmp) roots.push(path.join(cwd, '.omp', 'skills'));
+  if (fs.existsSync(path.join(cwd, 'skills'))) roots.push(path.join(cwd, 'skills'));
+
+  return roots.length > 0 ? roots : [path.join(cwd, '.agents', 'skills')];
+}
 
 let targetRoots = [];
 
 if (isRepoMode) {
-  targetRoots = repoRoots;
+  targetRoots = getAdaptiveRepoRoots();
   console.log('📦 Installing in Repo/Project-level Mode (Current Workspace)...');
 } else if (isGlobalMode) {
   targetRoots = globalRoots;
   console.log('🌐 Installing in User Global Mode (Home Directory)...');
 } else if (isAllMode) {
-  targetRoots = [...globalRoots, ...repoRoots];
+  targetRoots = [...globalRoots, ...getAdaptiveRepoRoots()];
   console.log('🚀 Installing in All Mode (Global & Repo)...');
 } else {
-  // Default: install to global, and if in a git/agent repo, also sync to repo .agents/skills
+  // Default mode: sync across global runtimes and adaptively include repo if workspace marker present
   targetRoots = [...globalRoots];
-  if (fs.existsSync(path.join(cwd, '.git')) || fs.existsSync(path.join(cwd, '.agents')) || fs.existsSync(path.join(cwd, '.claude'))) {
+  if (fs.existsSync(path.join(cwd, '.git')) || fs.existsSync(path.join(cwd, 'package.json')) || fs.existsSync(path.join(cwd, '.agents'))) {
     targetRoots.push(path.join(cwd, '.agents', 'skills'));
   }
   console.log('🚀 Installing/Updating Shopaholic Skill across agent runtimes & workspace...');
@@ -71,7 +82,6 @@ for (const root of targetRoots) {
   visited.add(root);
   try {
     const targetDir = path.join(root, 'shopaholic');
-    // Skip if targetDir is the exact same path as srcDir
     if (path.resolve(targetDir) === path.resolve(srcDir)) {
       continue;
     }
