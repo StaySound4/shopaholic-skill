@@ -2,7 +2,7 @@
   "experiment_id": "EXP-SHOPAHOLIC-V1-SMOKE-001",
   "protocol_version": "1.0",
   "created_at": "2026-08-27T00:00:00Z",
-  "case_set_hash": "73081c0354d005ff0a13a2c90cecd7ae19a74466deeccd0979b1aec8dd99bc25",
+  "case_set_hash": "4d671d622a64e970c23f1c23af8590b770e315562a9f9ee53570f8ebc805ae8e",
   "conditions": [
     "B0_no_skill",
     "B1_uploaded_current",

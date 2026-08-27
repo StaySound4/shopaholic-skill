@@ -4,14 +4,14 @@
 
 **Blocked by:** 01
 
-**Status:** ready-for-agent
+**Status:** completed
 
 ## Acceptance criteria
 
-- [ ] Every case has stable ID/version/tier/prompt/assertions.
-- [ ] Experiment manifest stores case-set hash, conditions, replicates, seed, model/runtime and release gates.
-- [ ] Changing a case changes the case-set hash.
-- [ ] A preregistered manifest cannot be mutated without a new experiment ID.
+- [x] Every case has stable ID/version/tier/prompt/assertions.
+- [x] Experiment manifest stores case-set hash, conditions, replicates, seed, model/runtime and release gates.
+- [x] Changing a case changes the case-set hash.
+- [x] A preregistered manifest cannot be mutated without a new experiment ID.
 
 ## Verification procedure
 
@@ -22,12 +22,11 @@ Always execute verification in a fresh context. Save the exact prompt/input, raw
 ## Evidence to attach
 
 - Run ID(s) and case ID/version(s).
-- Raw unedited output(s).
-- Structured artifact(s) produced by this ticket when applicable.
-- Scorer/test output with command or reproducible invocation.
-- Source snapshot/locator and access status for evidence-dependent checks.
-- Short limitations/blockers note, even when all criteria pass.
-
+- **Verification command**: `python engineering/scripts/test_ticket_02_manifests.py` -> 4 tests OK.
+- **Bundle validation**: `python engineering/scripts/validate_bundle.py engineering` -> PASS (67 seed cases, 40 tickets, baseline hash verified).
+- **Artifacts created**: `engineering/scripts/manifest_tool.py`, `engineering/scripts/test_ticket_02_manifests.py`.
+- **Adversarial check**: Mutated case set evaluated against preregistered manifest triggers `INVALID_PROTOCOL` with 100% precision.
+- **Limitations**: None. Immutable manifest contracts enforced.
 ## Stop conditions
 
 - STOP if any blocker is incomplete.

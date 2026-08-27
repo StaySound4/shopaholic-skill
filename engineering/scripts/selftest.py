@@ -16,6 +16,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/validate_bundle.py'),str(ROOT)])
         # 1b ticket 01 baseline seam test
         run([sys.executable,str(ROOT/'scripts/test_ticket_01_baseline_seam.py')])
+        # 1c ticket 02 manifest and cases test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_02_manifests.py')])
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
         # 3 deterministic randomization
