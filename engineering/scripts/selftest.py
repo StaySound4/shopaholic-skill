@@ -54,6 +54,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_19_landed_cost.py')])
         # 1u ticket 22 official source routing playbooks test
         run([sys.executable,str(ROOT/'scripts/test_ticket_22_source_routing.py')])
+        # 1v ticket 23 commercial relationships and sample provenance test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_23_commercial_provenance.py')])
         # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
