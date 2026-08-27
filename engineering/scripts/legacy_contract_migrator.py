@@ -45,13 +45,12 @@ def migrate_legacy_candidate_pools(legacy_pools_dict: Dict[str, Any]) -> Dict[st
             else:
                 migrated["watch_list"].append(cand)
 
-    # 3. Adopt canonical pools if already present
+    # 3. Safely merge canonical pools if already present without overwriting or dropping
     for pool in VALID_EXPLICIT_POOLS:
-        if pool in legacy_pools_dict and pool not in ["mature_recommendations", "conditional_recommendations", "watch_list"]:
-            migrated[pool].extend(legacy_pools_dict[pool])
-        elif pool in legacy_pools_dict and not legacy_pools_dict.get("tier_a_mature"):
-            migrated[pool] = legacy_pools_dict[pool]
-
+        if pool in legacy_pools_dict:
+            for cand in legacy_pools_dict[pool]:
+                if cand not in migrated[pool]:
+                    migrated[pool].append(cand)
     return migrated
 
 def audit_record_for_legacy_leakage(record: Dict[str, Any]) -> Dict[str, Any]:

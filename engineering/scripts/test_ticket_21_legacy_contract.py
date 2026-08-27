@@ -37,6 +37,23 @@ class TestTicket21LegacyContract(unittest.TestCase):
         self.assertEqual(len(migrated["watch_list"]), 1)
         self.assertEqual(len(migrated["conditional_recommendations"]), 1)
         self.assertEqual(migrated["conditional_recommendations"][0]["name"], "Discontinued Flagship Option")
+    def test_01b_merge_mixed_legacy_and_canonical_pools(self):
+        """Pass path: Merges mixed legacy and existing canonical pools without dropping or overwriting."""
+        mixed_input = {
+            "tier_a_mature": [{"name": "Mature Legacy", "condition": "new"}],
+            "tier_b_observation": [{"name": "Obs Legacy", "condition": "new"}],
+            "mature_recommendations": [{"name": "Canonical Mature", "condition": "new"}],
+            "watch_list": [{"name": "Canonical Watch", "condition": "new"}]
+        }
+        migrated = migrate_legacy_candidate_pools(mixed_input)
+        mature_names = [c["name"] for c in migrated["mature_recommendations"]]
+        watch_names = [c["name"] for c in migrated["watch_list"]]
+        self.assertIn("Mature Legacy", mature_names)
+        self.assertIn("Canonical Mature", mature_names)
+        self.assertIn("Obs Legacy", watch_names)
+        self.assertIn("Canonical Watch", watch_names)
+        self.assertEqual(len(migrated["mature_recommendations"]), 2)
+        self.assertEqual(len(migrated["watch_list"]), 2)
 
     def test_02_audit_clean_canonical_record(self):
         """Pass path: Canonical record passes audit with is_clean=True."""
