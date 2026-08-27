@@ -86,6 +86,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_35_paired_stats.py')])
         # 1ak ticket 36 preregistered release gates enforcement test
         run([sys.executable,str(ROOT/'scripts/test_ticket_36_release_gates.py')])
+        # 1al ticket 37 skill packaging and safe installer test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_37_installer_packaging.py')])
         # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
