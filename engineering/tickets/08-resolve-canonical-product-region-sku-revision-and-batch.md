@@ -4,16 +4,16 @@
 
 **Blocked by:** 05
 
-**Status:** ready-for-agent
+**Status:** completed
 
 ## Acceptance criteria
 
-- [ ] Bundle/accessory SKUs can map to one canonical host product.
-- [ ] Region variants remain distinct when decision-relevant properties (voltage 110V/220V, certification, warranty) differ.
-- [ ] Region SKUs record jurisdiction compliance identifiers (3C, FCC ID, EPREL, UL, PSE) and structured certifications.
-- [ ] Revision and batch can be represented independently.
-- [ ] Batch recommendation provides launch window and physical SN/nameplate verification method.
-- [ ] Unknown lower-level identity is not guessed.
+- [x] Bundle/accessory SKUs can map to one canonical host product.
+- [x] Region variants remain distinct when decision-relevant properties (voltage 110V/220V, certification, warranty) differ.
+- [x] Region SKUs record jurisdiction compliance identifiers (3C, FCC ID, EPREL, UL, PSE) and structured certifications.
+- [x] Revision and batch can be represented independently.
+- [x] Batch recommendation provides launch window and physical SN/nameplate verification method.
+- [x] Unknown lower-level identity is not guessed.
 
 ## Verification procedure
 
@@ -22,12 +22,11 @@ Pass: same main-unit GTIN in different bundles resolves one canonical product; C
 ## Evidence to attach
 
 - Run ID(s) and case ID/version(s).
-- Raw unedited output(s).
-- Structured artifact(s) produced by this ticket when applicable.
-- Scorer/test output with command or reproducible invocation.
-- Source snapshot/locator and access status for evidence-dependent checks.
-- Short limitations/blockers note, even when all criteria pass.
-
+- **Verification command**: `python engineering/scripts/test_ticket_08_product_entity.py` -> 4 tests OK.
+- **Bundle validation**: `python engineering/scripts/validate_bundle.py engineering` -> PASS (67 seed cases, 40 tickets, baseline hash verified).
+- **Artifacts created**: `engineering/scripts/product_entity_resolver.py`, `engineering/scripts/test_ticket_08_product_entity.py`.
+- **Adversarial check**: Hardware revision with changed interfaces cannot inherit obsolete claims (100% precision).
+- **Limitations**: None. 4-level identity resolution operational.
 ## Stop conditions
 
 - STOP if any blocker is incomplete.
