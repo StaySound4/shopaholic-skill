@@ -11,7 +11,7 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-green)](https://agentskills.io)
 [![skills.sh](https://img.shields.io/badge/skills.sh-Compatible-blue)](https://skills.sh)
 [![Multi-Runtime](https://img.shields.io/badge/Runtime-Claude%20Code%20·%20Codex%20·%20Cursor%20·%20Pi%20·%20OpenClaw-blueviolet)](#-极简安装指南)
-[![Version](https://img.shields.io/badge/Release-v0.9.3-orange)](https://github.com/StaySound4/shopaholic-skill/releases/tag/v0.9.3)
+[![Version](https://img.shields.io/badge/Release-v0.9.5-orange)](https://github.com/StaySound4/shopaholic-skill/releases/tag/v0.9.5)
 
 <br>
 
@@ -269,13 +269,36 @@ shopaholic-skill/
 │   └── ablation-suite.js      # 多子代理消融实验与自动化评测套件
 ├── assets/
 │   └── logo.png               # 项目官方 Logo 图标
+├── engineering/               # 工程验证框架（40 项工程票据与评测引擎）
+│   ├── tickets/               # 原子化工程票据与验收标准
+│   ├── scripts/               # 证据账本/信源路由/统计与发布门禁等引擎
+│   ├── schemas/               # run-record / decision-record 等 JSON Schema
+│   └── evals/                 # 实验协议、种子用例与评测指标词典
+└── skills/
     └── shopaholic/
         ├── SKILL.md           # 核心技能指令与决策工作流规范
         └── references/        # 深度参考协议与领域知识库
             ├── category-checklists.md   # 12 大品类用料与避坑清单
             ├── evidence-and-risks.md    # 证据账本与信源分级规范
-            └── research-protocol.md     # 4-Lane 交叉核验与多模式协议
+            ├── research-protocol.md     # 4-Lane 交叉核验与多模式协议
+            └── categories/               # 模块化品类手册（渐进式加载）
+                ├── INDEX.md              # 品类路由索引
+                ├── coffee.md             # 咖啡与研磨设备
+                ├── hifi-audio.md         # HiFi 音频
+                ├── display-monitors.md   # 显示设备
+                └── infant-gear.md        # 母婴装备
 ```
+
+---
+
+## 📋 更新日志
+
+### v0.9.5（2026-08-28）
+
+- 新增模块化品类手册（咖啡 / HiFi 音频 / 显示设备 / 母婴装备），渐进式加载与严格上下文隔离
+- 新增宣称/实测偏差（CMD）非对称审计：独立实测偏差率与保真度因子量化，严重虚标一票否决
+- 完善工程验证框架：40 项原子工程票据全部落地，覆盖证据账本、信源路由、信噪裁决、定价语义、敏感性分析、发布门禁与证据档案
+- 强化安全边界：检索内容一律视为不可信证据数据，提示注入载荷中性化，源/工具不可用显式降级
 
 ---
 

@@ -22,3 +22,4 @@ Shopaholic 帮助用户穿透商品营销话术，基于国家与行业标准、
 - `references/category-checklists.md`：12 大常见消费品类标准与避坑清单
 - `references/evidence-and-risks.md`：信源四级金字塔与反软广脱水指南
 - `references/research-protocol.md`：4-Lane 交叉取证与全生命周期成本 (TCO) 计算
+- `references/categories/`：模块化品类手册（咖啡、HiFi 音频、显示设备、母婴装备），渐进式加载与严格上下文隔离

@@ -1,6 +1,6 @@
 {
   "name": "pi-shopaholic",
-  "version": "0.9.3",
+  "version": "0.9.5",
   "description": "专为希望借助 AI 在中国大陆主流电商平台进行理性消费的用户打造的开源循证购物决策 Agent Skill - Evidence-based consumer decision support & supply chain intelligence skill for AI Agents (Claude, Codex, Cursor, Pi, OpenClaw).",
   "main": "index.js",
   "bin": {

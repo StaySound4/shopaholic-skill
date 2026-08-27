@@ -11,7 +11,7 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-green)](https://agentskills.io)
 [![skills.sh](https://img.shields.io/badge/skills.sh-Compatible-blue)](https://skills.sh)
 [![Multi-Runtime](https://img.shields.io/badge/Runtime-Claude%20Code%20·%20Codex%20·%20Cursor%20·%20Pi%20·%20OpenClaw-blueviolet)](#-quick-installation-guide)
-[![Version](https://img.shields.io/badge/Release-v0.9.3-orange)](https://github.com/StaySound4/shopaholic-skill/releases/tag/v0.9.3)
+[![Version](https://img.shields.io/badge/Release-v0.9.5-orange)](https://github.com/StaySound4/shopaholic-skill/releases/tag/v0.9.5)
 
 <br>
 
@@ -269,13 +269,36 @@ shopaholic-skill/
 │   └── ablation-suite.js      # Multi-agent ablation benchmark & automated evaluation harness
 ├── assets/
 │   └── logo.png               # Project official logo icon
+├── engineering/               # Engineering verification framework (40 atomic tickets & eval engines)
+│   ├── tickets/               # Atomic engineering tickets with acceptance criteria
+│   ├── scripts/               # Evidence ledger, source routing, statistics & release gate engines
+│   ├── schemas/               # JSON Schemas: run-record / decision-record / manifests
+│   └── evals/                 # Experiment protocol, seed cases & metric dictionary
+└── skills/
     └── shopaholic/
         ├── SKILL.md           # Master workflow specification and execution protocol
         └── references/        # Deep-dive knowledge modules
             ├── category-checklists.md   # 12 category standards, teardown checks & pitfalls
             ├── evidence-and-risks.md    # Evidentiary accounting, anti-GEO & regret audits
-            └── research-protocol.md     # 4-Lane protocol & verification standards
+            ├── research-protocol.md     # 4-Lane protocol & verification standards
+            └── categories/               # Modular category playbooks (progressive loading)
+                ├── INDEX.md              # Category router index
+                ├── coffee.md             # Coffee & grinding equipment
+                ├── hifi-audio.md         # HiFi audio
+                ├── display-monitors.md   # Display devices
+                └── infant-gear.md        # Infant & nursery gear
 ```
+
+---
+
+## Changelog
+
+### v0.9.5 (2026-08-28)
+
+- Added modular category playbooks (coffee / HiFi audio / display monitors / infant gear) with progressive loading and strict context isolation
+- Added Claimed/Measured Deviation (CMD) asymmetric audit: independent measured deviation rates and fidelity factors, one-vote veto on severe mislabeling
+- Completed the engineering verification framework: all 40 atomic engineering tickets landed, covering evidence ledger, source routing, safety adjudication, price semantics, sensitivity analysis, release gates, and evidence dossier
+- Hardened safety boundaries: retrieved content treated strictly as untrusted evidence data, prompt-injection payloads neutralized, explicit degraded modes on source/tool unavailability
 
 ---
 
