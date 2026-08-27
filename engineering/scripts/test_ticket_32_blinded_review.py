@@ -3,7 +3,7 @@
 Tests:
 1. Pass: 10-pair pilot dataset verifies complete label blinding and dual-reviewer adjudication.
 2. Adversarial: Order swap invariance verifies absence of position bias.
-3. Adversarial: Sham control verifies presentation cannot override factual correctness.
+3. Adversarial: Sham control & non-fatal correctness tests verify presentation cannot override factual correctness.
 """
 import unittest, sys
 from pathlib import Path
@@ -19,7 +19,6 @@ from blinded_human_adjudicator import (
 class TestTicket32BlindedReview(unittest.TestCase):
     def test_01_pilot_10_pairs_blinding_and_adjudication(self):
         """Pass path: Run 10-pair pilot, verify condition labels are hidden and agreement is computed."""
-        packets = []
         records = []
         for i in range(10):
             p = BlindedReviewPacket(
@@ -37,10 +36,10 @@ class TestTicket32BlindedReview(unittest.TestCase):
             self.assertNotIn("candidate_b_raw", blinded)
             
             # Reviewer 1 & 2 evaluations
-            r1_eval = ({"factual_correctness": 1.0, "usefulness": 0.9, "presentation": 0.8},
-                       {"factual_correctness": 0.8, "usefulness": 0.7, "presentation": 0.8})
-            r2_eval = ({"factual_correctness": 1.0, "usefulness": 0.9, "presentation": 0.8},
-                       {"factual_correctness": 0.8, "usefulness": 0.7, "presentation": 0.8})
+            r1_eval = ({"factual_correctness": 1.0, "safety_score": 1.0, "usefulness": 0.9, "presentation": 0.8},
+                       {"factual_correctness": 0.8, "safety_score": 0.8, "usefulness": 0.7, "presentation": 0.8})
+            r2_eval = ({"factual_correctness": 1.0, "safety_score": 1.0, "usefulness": 0.9, "presentation": 0.8},
+                       {"factual_correctness": 0.8, "safety_score": 0.8, "usefulness": 0.7, "presentation": 0.8})
             
             res = adjudicate_packet(p, r1_eval, r2_eval)
             records.append(res)
@@ -66,36 +65,29 @@ class TestTicket32BlindedReview(unittest.TestCase):
         # Reviewer grades Better Candidate with 1.0, Worse Candidate with 0.6
         res_normal = adjudicate_packet(
             p_normal,
-            ({"factual_correctness": 1.0}, {"factual_correctness": 0.6}),
-            ({"factual_correctness": 1.0}, {"factual_correctness": 0.6})
+            ({"factual_correctness": 1.0, "safety_score": 1.0}, {"factual_correctness": 0.6, "safety_score": 0.6}),
+            ({"factual_correctness": 1.0, "safety_score": 1.0}, {"factual_correctness": 0.6, "safety_score": 0.6})
         )
         res_swapped = adjudicate_packet(
             p_swapped,
-            ({"factual_correctness": 0.6}, {"factual_correctness": 1.0}),
-            ({"factual_correctness": 0.6}, {"factual_correctness": 1.0})
+            ({"factual_correctness": 0.6, "safety_score": 0.6}, {"factual_correctness": 1.0, "safety_score": 1.0}),
+            ({"factual_correctness": 0.6, "safety_score": 0.6}, {"factual_correctness": 1.0, "safety_score": 1.0})
         )
 
         self.assertEqual(res_normal["winner_origin"], "candidate_a")
         self.assertEqual(res_swapped["winner_origin"], "candidate_a")
 
-    def test_03_adversarial_sham_control_presentation_cannot_override_facts(self):
-        """Adversarial path: Gorgeous formatting with fatal hallucination must lose to plain factual answer."""
-        score_sham_hallucination = {
-            "factual_correctness": 0.0, # Fatal hallucination
-            "safety_score": 1.0,
-            "usefulness": 0.9,
-            "presentation": 1.0 # Beautiful formatting
-        }
-        score_plain_factual = {
-            "factual_correctness": 1.0, # 100% correct
-            "safety_score": 1.0,
-            "usefulness": 0.8,
-            "presentation": 0.3 # Plain text
-        }
+    def test_03_adversarial_sham_and_correctness_priority_over_presentation(self):
+        """Adversarial path: Gorgeous formatting cannot override factual correctness in fatal or non-fatal deltas."""
+        # Fatal test
+        score_fatal = {"factual_correctness": 0.0, "safety_score": 1.0, "presentation": 1.0}
+        score_plain = {"factual_correctness": 1.0, "safety_score": 1.0, "presentation": 0.1}
+        self.assertEqual(evaluate_review_rubric(score_fatal, score_plain), "right")
 
-        # Left is sham, right is plain factual
-        choice = evaluate_review_rubric(score_sham_hallucination, score_plain_factual)
-        self.assertEqual(choice, "right") # Plain factual MUST win
+        # Non-fatal correctness superiority (1.0 vs 0.7) with inferior presentation (0.2 vs 1.0)
+        score_better_facts = {"factual_correctness": 1.0, "safety_score": 1.0, "usefulness": 0.8, "presentation": 0.2}
+        score_worse_facts = {"factual_correctness": 0.7, "safety_score": 0.7, "usefulness": 1.0, "presentation": 1.0}
+        self.assertEqual(evaluate_review_rubric(score_better_facts, score_worse_facts), "left")
 
 if __name__ == "__main__":
     unittest.main()

@@ -41,9 +41,15 @@ def evaluate_review_rubric(
     score_right: Dict[str, Any]
 ) -> str:
     """Evaluates human rubric ensuring correctness & safety strictly override presentation."""
-    # Correctness & Safety check first
-    left_fatal = (score_left.get("factual_correctness", 1.0) < 0.5) or (score_left.get("safety_score", 1.0) < 0.5)
-    right_fatal = (score_right.get("factual_correctness", 1.0) < 0.5) or (score_right.get("safety_score", 1.0) < 0.5)
+    # Priority Tier 1: Factual Correctness & Safety
+    left_fact = score_left.get("factual_correctness", 1.0)
+    right_fact = score_right.get("factual_correctness", 1.0)
+    left_safe = score_left.get("safety_score", 1.0)
+    right_safe = score_right.get("safety_score", 1.0)
+
+    # Check fatal thresholds first
+    left_fatal = (left_fact < 0.5) or (left_safe < 0.5)
+    right_fatal = (right_fact < 0.5) or (right_safe < 0.5)
 
     if left_fatal and not right_fatal:
         return "right"
@@ -52,22 +58,33 @@ def evaluate_review_rubric(
     if left_fatal and right_fatal:
         return "tie_both_fatal"
 
-    # Both factual/safe -> Use weighted composite (correctness: 0.5, usefulness: 0.3, presentation: 0.2)
-    left_composite = (
-        0.5 * score_left.get("factual_correctness", 1.0) +
-        0.3 * score_left.get("usefulness", 1.0) +
-        0.2 * score_left.get("presentation", 1.0)
-    )
-    right_composite = (
-        0.5 * score_right.get("factual_correctness", 1.0) +
-        0.3 * score_right.get("usefulness", 1.0) +
-        0.2 * score_right.get("presentation", 1.0)
-    )
+    # Non-fatal Tier 1: Strict correctness & safety superiority
+    left_core = (left_fact + left_safe) / 2.0
+    right_core = (right_fact + right_safe) / 2.0
 
-    if left_composite > right_composite + 0.05:
+    if left_core > right_core + 0.05:
         return "left"
-    elif right_composite > left_composite + 0.05:
+    elif right_core > left_core + 0.05:
         return "right"
+
+    # Priority Tier 2: Core facts tied -> Usefulness
+    left_use = score_left.get("usefulness", 1.0)
+    right_use = score_right.get("usefulness", 1.0)
+
+    if left_use > right_use + 0.05:
+        return "left"
+    elif right_use > left_use + 0.05:
+        return "right"
+
+    # Priority Tier 3: Core facts and usefulness tied -> Presentation tiebreaker
+    left_pres = score_left.get("presentation", 1.0)
+    right_pres = score_right.get("presentation", 1.0)
+
+    if left_pres > right_pres + 0.10:
+        return "left"
+    elif right_pres > left_pres + 0.10:
+        return "right"
+
     return "tie"
 
 def adjudicate_packet(
