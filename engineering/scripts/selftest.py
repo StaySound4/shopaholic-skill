@@ -22,9 +22,11 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_03_controls.py')])
         # 1e ticket 04 three-class constraints test
         run([sys.executable,str(ROOT/'scripts/test_ticket_04_constraints.py')])
+        # 1f ticket 05 claim and evidence ledger test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_05_claim_ledger.py')])
+        # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
-        # 3 deterministic randomization
         common=[sys.executable,str(ROOT/'scripts/randomize_plan.py'),'--cases',str(ROOT/'evals/SEED_CASES.jsonl'),'--conditions','B1_uploaded_current,T_full','--replicates','2','--seed','123']
         p1=td/'p1.jsonl';p2=td/'p2.jsonl'
         run(common+['--out',str(p1)]);run(common+['--out',str(p2)])

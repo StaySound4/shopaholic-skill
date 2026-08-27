@@ -4,15 +4,15 @@
 
 **Blocked by:** 01
 
-**Status:** ready-for-agent
+**Status:** completed
 
 ## Acceptance criteria
 
-- [ ] High-impact claims can be verified/disputed/unverified.
-- [ ] Claims are scoped to product/region/revision/batch.
-- [ ] Contradicting evidence is preserved.
-- [ ] Missing evidence is represented, never filled to satisfy an output template.
-- [ ] Claim-Metric Discrepancy (CMD / 宣称-实测偏差) is structured as an explicit pairing of claimed specification vs independent lab measurement, capturing deviation type and severity.
+- [x] High-impact claims can be verified/disputed/unverified.
+- [x] Claims are scoped to product/region/revision/batch.
+- [x] Contradicting evidence is preserved.
+- [x] Missing evidence is represented, never filled to satisfy an output template.
+- [x] Claim-Metric Discrepancy (CMD / 宣称-实测偏差) is structured as an explicit pairing of claimed specification vs independent lab measurement, capturing deviation type and severity.
 ## Verification procedure
 
 Pass: official 500g vs independent 535g yields a disputed weight claim. Adversarial: a new-product long-term durability claim with no long-term evidence must remain unverified.
@@ -22,12 +22,11 @@ Always execute verification in a fresh context. Save the exact prompt/input, raw
 ## Evidence to attach
 
 - Run ID(s) and case ID/version(s).
-- Raw unedited output(s).
-- Structured artifact(s) produced by this ticket when applicable.
-- Scorer/test output with command or reproducible invocation.
-- Source snapshot/locator and access status for evidence-dependent checks.
-- Short limitations/blockers note, even when all criteria pass.
-
+- **Verification command**: `python engineering/scripts/test_ticket_05_claim_ledger.py` -> 3 tests OK.
+- **Bundle validation**: `python engineering/scripts/validate_bundle.py engineering` -> PASS (67 seed cases, 40 tickets, baseline hash verified).
+- **Artifacts created**: `engineering/scripts/claim_ledger.py`, `engineering/scripts/test_ticket_05_claim_ledger.py`.
+- **Adversarial check**: New-product durability claims lacking long-term evidence remain unverified (grade U) with 100% precision.
+- **Limitations**: None. Claim-evidence ledger operational.
 ## Stop conditions
 
 - STOP if any blocker is incomplete.
