@@ -13,24 +13,37 @@ def extract_decision_record_xml(raw_text: str) -> str | None:
         return match.group(1).strip()
     return None
 
-def validate_against_schema(data: dict, schema_path: Path) -> list[str]:
-    """Lightweight schema check for run-record required fields and types."""
+def validate_against_schema(data: dict, schema_path: Path | None = None) -> list[str]:
+    """Validates run-record against schema definition."""
     errors = []
-    required = ["run_id", "case_id", "condition", "replicate", "started_at", "status", "raw_output_path"]
-    for req in required:
-        if req not in data or data[req] is None:
-            errors.append(f"Missing required field: {req}")
-    
-    valid_statuses = ["complete", "COMPLETED", "FAIL_PRODUCT", "FAIL_EVALUATOR", "BLOCKED_CAPABILITY", "BLOCKED_SOURCE", "INVALID_PROTOCOL"]
-    status = data.get("status")
-    if status not in valid_statuses:
-        errors.append(f"Invalid status '{status}', must be one of {valid_statuses}")
+    if schema_path is None:
+        schema_path = Path(__file__).resolve().parents[1] / "schemas/run-record.schema.json"
+        
+    if schema_path.is_file():
+        try:
+            schema = json.loads(schema_path.read_text(encoding="utf-8"))
+            required = schema.get("required", [])
+            for req in required:
+                if req not in data or data[req] is None:
+                    errors.append(f"Missing required field: {req}")
+            
+            valid_statuses = schema.get("properties", {}).get("status", {}).get("enum", [])
+            status = data.get("status")
+            if valid_statuses and status not in valid_statuses:
+                errors.append(f"Invalid status '{status}', must be one of {valid_statuses}")
+        except Exception as e:
+            errors.append(f"Failed to read/parse schema: {e}")
+    else:
+        # Fallback if schema file cannot be loaded
+        required = ["run_id", "case_id", "condition", "replicate", "started_at", "status", "raw_output_path"]
+        for req in required:
+            if req not in data or data[req] is None:
+                errors.append(f"Missing required field: {req}")
         
     if "replicate" in data and (not isinstance(data["replicate"], int) or data["replicate"] < 1):
         errors.append("Field 'replicate' must be an integer >= 1")
         
     return errors
-
 def create_run_record(
     case_id: str,
     condition: str,
@@ -95,9 +108,8 @@ def create_run_record(
         "search_count": search_count,
         "notes": notes
     }
-    
-    # Validate against minimal schema contract
-    schema_path = Path("engineering/schemas/run-record.schema.json")
+    # Validate against schema contract
+    schema_path = Path(__file__).resolve().parents[1] / "schemas/run-record.schema.json"
     errs = validate_against_schema(record, schema_path)
     if errs:
         raise ValueError(f"Run record validation failed: {errs}")

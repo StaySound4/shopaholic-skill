@@ -34,8 +34,10 @@ def main():
         m=re.match(r'(\d+)-',t.name)
         if m: numbers.add(int(m.group(1)))
         txt=t.read_text(encoding='utf-8')
-        for field in ['**What to build:**','**Blocked by:**','**Status:** ready-for-agent','## Acceptance criteria','## Verification procedure','## Evidence to attach','## Stop conditions']:
+        for field in ['**What to build:**','**Blocked by:**','## Acceptance criteria','## Verification procedure','## Evidence to attach','## Stop conditions']:
             if field not in txt: fail(f'{t.name}: missing {field}',errors)
+        if not re.search(r'\*\*Status:\*\*\s+(ready-for-agent|in-progress|completed)', txt):
+            fail(f'{t.name}: invalid or missing **Status:**', errors)
     # detect obvious fake preassigned experiment scores
     bad=[]
     for f in list((root/'evals').glob('*'))+list((root/'scripts').glob('*')):
