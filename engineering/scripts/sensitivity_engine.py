@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Deterministic sensitivity flip-point analysis engine.
 Calculates exact linear preference weight thresholds that flip top candidate recommendations,
-translates mathematical thresholds into contextual scenario sliders (e.g. usage split),
-articulates pairwise trade-off flip conditions for candidate rivalries, strictly suppresses
-sensitivity analysis under Pareto dominance, and forbids ungrounded pseudo-probabilities.
+records input scores and normalization rules, translates mathematical thresholds into contextual
+scenario sliders (e.g. usage split), articulates pairwise trade-off flip conditions for 2-way
+and 3-way candidate rivalries, strictly suppresses sensitivity analysis under Pareto dominance,
+and forbids ungrounded pseudo-probabilities.
 """
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -14,10 +15,6 @@ def compute_linear_flip_point(
     score_b_1: float
 ) -> Optional[float]:
     """Computes exact weight w_1 on Criterion 1 that equates A and B: (1-w)A0 + w A1 = (1-w)B0 + w B1."""
-    # (1-w)(A0 - B0) = w(B1 - A1)
-    # delta_0 * (1-w) = delta_1 * w
-    # delta_0 = w * (delta_0 + delta_1)
-    # w = delta_0 / (delta_0 + delta_1) = (B0 - A0) / ((A1 - A0) - (B1 - B0))
     numerator = score_b_0 - score_a_0
     denominator = (score_a_1 - score_a_0) - (score_b_1 - score_b_0)
     
@@ -35,7 +32,8 @@ def analyze_candidate_sensitivity(
     criterion_0: str,
     criterion_1: str,
     criterion_0_label: Optional[str] = None,
-    criterion_1_label: Optional[str] = None
+    criterion_1_label: Optional[str] = None,
+    normalization_rule: str = "linear_0_to_100"
 ) -> Dict[str, Any]:
     """Performs deterministic sensitivity analysis between two close Pareto-frontier candidates."""
     name_a = candidate_a.get("name", "Candidate A")
@@ -46,6 +44,12 @@ def analyze_candidate_sensitivity(
     b0 = float(candidate_b["scores"][criterion_0])
     b1 = float(candidate_b["scores"][criterion_1])
     
+    input_metadata = {
+        "candidate_a": {"name": name_a, "scores": {criterion_0: a0, criterion_1: a1}},
+        "candidate_b": {"name": name_b, "scores": {criterion_0: b0, criterion_1: b1}},
+        "normalization_rule": normalization_rule
+    }
+
     # 1. Check Pareto dominance -> Strict suppression
     a_dominates_b = (a0 >= b0 and a1 >= b1) and (a0 > b0 or a1 > b1)
     b_dominates_a = (b0 >= a0 and b1 >= a1) and (b0 > a0 or b1 > a1)
@@ -57,7 +61,8 @@ def analyze_candidate_sensitivity(
             "suppressed": True,
             "suppression_reason": f"Pareto dominance: {dominator} strictly dominates {dominated} across all evaluated criteria; no valid trade-off flip point exists.",
             "flip_weight": None,
-            "contextual_slider": None
+            "contextual_slider": None,
+            "inputs_recorded": input_metadata
         }
 
     # 2. Compute exact deterministic flip point
@@ -68,7 +73,8 @@ def analyze_candidate_sensitivity(
             "suppressed": True,
             "suppression_reason": "No linear flip point exists within the valid weight interval [0.0, 1.0].",
             "flip_weight": None,
-            "contextual_slider": None
+            "contextual_slider": None,
+            "inputs_recorded": input_metadata
         }
 
     # 3. Format natural language contextual slider
@@ -77,7 +83,6 @@ def analyze_candidate_sensitivity(
     pct1 = round(w_flip * 100)
     pct0 = 100 - pct1
     
-    # Determine who wins on criterion 0 vs criterion 1
     winner_crit0 = name_a if a0 > b0 else name_b
     winner_crit1 = name_a if a1 > b1 else name_b
     
@@ -96,7 +101,46 @@ def analyze_candidate_sensitivity(
         "pairwise_tradeoff": {
             "advantage_crit0": {"winner": winner_crit0, "margin": round(abs(a0 - b0), 2)},
             "advantage_crit1": {"winner": winner_crit1, "margin": round(abs(a1 - b1), 2)}
-        }
+        },
+        "inputs_recorded": input_metadata
+    }
+
+def analyze_three_candidate_rivalry(
+    candidates: List[Dict[str, Any]],
+    criterion_0: str,
+    criterion_1: str,
+    criterion_0_label: Optional[str] = None,
+    criterion_1_label: Optional[str] = None
+) -> Dict[str, Any]:
+    """Articulates pairwise dominant trade-off flip conditions for 3-candidate rivalries."""
+    if len(candidates) != 3:
+        raise ValueError("analyze_three_candidate_rivalry requires exactly 3 candidates.")
+
+    pairs = [
+        (candidates[0], candidates[1]),
+        (candidates[1], candidates[2]),
+        (candidates[0], candidates[2])
+    ]
+    
+    pairwise_analyses = []
+    for c_i, c_j in pairs:
+        res = analyze_candidate_sensitivity(
+            candidate_a=c_i,
+            candidate_b=c_j,
+            criterion_0=criterion_0,
+            criterion_1=criterion_1,
+            criterion_0_label=criterion_0_label,
+            criterion_1_label=criterion_1_label
+        )
+        pairwise_analyses.append({
+            "pair": f"{c_i.get('name')} vs {c_j.get('name')}",
+            "analysis": res
+        })
+
+    return {
+        "rivalry_type": "three_candidate_pairwise_tradeoffs",
+        "candidate_names": [c.get("name") for c in candidates],
+        "pairwise_analyses": pairwise_analyses
     }
 
 if __name__ == "__main__":
