@@ -1,0 +1,647 @@
+{
+  "bundle": "shopaholic-v1-engineering",
+  "generated_at": "2026-08-27",
+  "file_count": 128,
+  "files": [
+    {
+      "path": ".scratch/shopaholic-v1/issues/01.md",
+      "sha256": "959cf925c1de21d2a298cf11cc2663ff87679c59a0e4d99877d550059676fb06",
+      "bytes": 2019
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/02.md",
+      "sha256": "63a70c666d81378bea35733c114c69cf1de00854c0c34c7042b50b438a8f61b3",
+      "bytes": 1929
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/03.md",
+      "sha256": "161b6d9a8bfbd266f07f6eb7bc931433b57c1d2d2c25fd1677901f976daaa3f9",
+      "bytes": 1919
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/04.md",
+      "sha256": "21f6f121370bd5e8ce5f4f88cf3ccec4f9131fd92fe7e49906310c056ee42161",
+      "bytes": 1810
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/05.md",
+      "sha256": "817b3da552285fc0b7f427fd1df6d5e83cfae2b0cd1e40f46f3d69232f1d59b7",
+      "bytes": 1817
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/06.md",
+      "sha256": "bd4277e018847f946684c3837ab02c28d4d58906b6b160b0586d186dc2578188",
+      "bytes": 1907
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/07.md",
+      "sha256": "54d2786a41f12db4a865a39b972e997ad9596d58afa391d49a4ca37d33723ebf",
+      "bytes": 1895
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/08.md",
+      "sha256": "719834f243ffb13c927d162d14ac96480d3bdb48cbfacfee8ecfcbadbfd64166",
+      "bytes": 1801
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/09.md",
+      "sha256": "fc25e045d91d614bb90a0b1181342eeeff9269c763f72e390b328e7f43295477",
+      "bytes": 1770
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/10.md",
+      "sha256": "15ad43ccf546bb5efa6618cb4ebe7bbcbb448a03251ad1b7a1ee78a00edcd204",
+      "bytes": 1825
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/11.md",
+      "sha256": "f609f4796440829eb9bfc5c05a234c59f78292a290c799d9f47ed9a30145148e",
+      "bytes": 1873
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/12.md",
+      "sha256": "e30722141d06029f080731af4a188c1a86577dcca4fe89f8c44f3c6c32688170",
+      "bytes": 1827
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/13.md",
+      "sha256": "6b50bb3b1281ce201ff8009f47f76aac63f7b240ff3d35d7e6d61d54f36ce410",
+      "bytes": 1866
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/14.md",
+      "sha256": "9e1df65854a89e6d4b40afa53c35ee95e8cf026fa6bfd2c715a29058544cae47",
+      "bytes": 1829
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/15.md",
+      "sha256": "d7923bd4526fb1d48063ac0b48061b00964883ad1f53657d2d6c3cdc385f82ae",
+      "bytes": 1816
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/16.md",
+      "sha256": "734a64fb2a615beb1a5071774b0540ae20f0a8c3874485bbf359ea443ae931c5",
+      "bytes": 1749
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/17.md",
+      "sha256": "1f414435f8cb00654290917977dbb47a73a3292caaddbd81bb02f7c312690982",
+      "bytes": 1857
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/18.md",
+      "sha256": "22ebd5499050407fff5f5d24eed4298f2cd408b802d3757eacd582858af3d38c",
+      "bytes": 1893
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/19.md",
+      "sha256": "265602e3daf20a5e92d561db12823bfd5c9b2bf0aa5773d2600a3c5b8c7b4ac9",
+      "bytes": 1775
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/20.md",
+      "sha256": "0ddaa46bb1d889ba77998186927b03f5ff448b8d4774373e1555d1ff4d665c38",
+      "bytes": 1843
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/21.md",
+      "sha256": "fd4f1a4b507b9cf8498e72850ea5ee5bb65afcc2bf9b8ce63fda3e9351e018f9",
+      "bytes": 1741
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/22.md",
+      "sha256": "5eb994973eeb08db9203881d2e0d9119ea74c866be702ae12c07e82fa062a04d",
+      "bytes": 1919
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/23.md",
+      "sha256": "de6306a75d4e709f41cf337251b705f1ebe7ecb8be50397a4de17448361cd16e",
+      "bytes": 1898
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/24.md",
+      "sha256": "1e6412cbe9bfca22b931e831338f3db769cb7dbd2c61f73b6a07a0c990a20743",
+      "bytes": 1825
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/25.md",
+      "sha256": "98bf47414dc6b75ffe02eaf4d54f247e9b7e1abd1bc30e75e010afe7bc11cc70",
+      "bytes": 1827
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/26.md",
+      "sha256": "04a1d22c9a03feb86329b5c3b452f6752872c2685fe1d3cc71cbe448277f6b82",
+      "bytes": 1755
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/27.md",
+      "sha256": "38091edbeeb892630726422bd9daa421fd299b8dd3b34cbda8da115241b47166",
+      "bytes": 1901
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/28.md",
+      "sha256": "3e8edeaa66cc501ccf432c735d51aa2577937801db2de1ec7218eea6e2c1a9e6",
+      "bytes": 1812
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/29.md",
+      "sha256": "d6d9e573d26cc4dcef3f55f23a5b8bb361468163f6ac702594bbfe9bc770cf9b",
+      "bytes": 1808
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/30.md",
+      "sha256": "cef9dc5de64ca938052f0c1778024e71cecd730c995ac2c9387c58cb92bca59b",
+      "bytes": 1787
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/31.md",
+      "sha256": "2462fd204897a82e7ce6afb10295339ce601ea3642be6eea5dde7b7bd697a095",
+      "bytes": 1895
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/32.md",
+      "sha256": "79b77edafa432a74731b207d8ec2e397d40bd3dafea2e1833a795fabea893ce8",
+      "bytes": 1821
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/33.md",
+      "sha256": "62b3377621e8cb02b12fe582eb57ef05b74008b2ad7f5ed4a3363e4a2aeaf2fe",
+      "bytes": 1827
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/34.md",
+      "sha256": "e6fc7aa8fec128bafca29d7396e47985e95942e800964db6dfb9e17703531911",
+      "bytes": 1889
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/35.md",
+      "sha256": "bde95d27328afdf3dd16fa2e2cb826fe1395c53281fa44c67331b4cbb7b4d6c6",
+      "bytes": 1890
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/36.md",
+      "sha256": "aef540dd37b405bc365c81d938c60bb2456f62cdb423ffc6df07770252102226",
+      "bytes": 1771
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/37.md",
+      "sha256": "8a227bdb1ecee573d06b9f2f3948ceb6611e7363249eff56cc10178ace29bfcd",
+      "bytes": 1889
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/38.md",
+      "sha256": "fc5c0a62d159bddb8db918d1a6b7e8e1122df98b515ac2aac19c22a286b170e1",
+      "bytes": 1842
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/39.md",
+      "sha256": "530a29fc3f2d1ba72b247f65749a3d212077fb19d191ef42ad48c93674ae9cf3",
+      "bytes": 1848
+    },
+    {
+      "path": ".scratch/shopaholic-v1/issues/40.md",
+      "sha256": "a10cbece906b4caf84dacf251b41c1c45b834812192f27d22fa3bceff0dc8401",
+      "bytes": 1980
+    },
+    {
+      "path": "ARCHITECTURE_DECISIONS.md",
+      "sha256": "6f16fe00106bd4656b81c2a205f3e12ca614fa9561b11c5dfa59d5f8d2dd25a2",
+      "bytes": 5982
+    },
+    {
+      "path": "CATEGORY_CONTRIBUTION_TEMPLATE.md",
+      "sha256": "939f941bdd3abbe13853b4508c52ed358e75ea9e78bb085057f078ab58aec89a",
+      "bytes": 2846
+    },
+    {
+      "path": "CURRENT_STATE_AUDIT.md",
+      "sha256": "7057ae2c4d6f33fd2de7c6b96d7c5d756462d9d20b1366b5d17f58093f6752c3",
+      "bytes": 6683
+    },
+    {
+      "path": "METHOD_COMPLIANCE.md",
+      "sha256": "fb2c844c54929eccfc958579169c19ff825380d2636321362b6211941af4c002",
+      "bytes": 1797
+    },
+    {
+      "path": "MIGRATION_PLAN.md",
+      "sha256": "cced51e0d95e577df903ef497b46d452d1535f953ec5342a8ff97025940b7708",
+      "bytes": 2544
+    },
+    {
+      "path": "README.md",
+      "sha256": "3e5b591866c55a2b414b2b93fdf50e95e260f091efb763fcb0d71aec5f42444e",
+      "bytes": 2465
+    },
+    {
+      "path": "SNAPSHOT_MANIFEST.json",
+      "sha256": "849836fe2b3db6a9fa92343541c5add7b52bca2b09a7d4503a48e6f033be5b03",
+      "bytes": 708
+    },
+    {
+      "path": "SOURCE_REGISTRY.md",
+      "sha256": "b267621f89ea6d51bd6f9c29ef035f372751f32438f409cea373cfce60be13a2",
+      "bytes": 10478
+    },
+    {
+      "path": "SPEC.md",
+      "sha256": "f4051aa8f96b78eb3c2cbef93e3c6e3ebaa3790193c9839cee3dc90ccc1e721c",
+      "bytes": 39164
+    },
+    {
+      "path": "TEST_EXECUTION_LOG.md",
+      "sha256": "65d2edd9309f41995762b8a8a1b712bda78ed82a808c96b16c50b916bfc4d139",
+      "bytes": 2497
+    },
+    {
+      "path": "TEST_SEAMS.md",
+      "sha256": "69e77f4c203853493810887264834b004b300150cee9142503cf48ce6e5aba0a",
+      "bytes": 2939
+    },
+    {
+      "path": "TICKET_DEPENDENCIES.mmd",
+      "sha256": "a4120f9b3fcc051029bb4adb10ce3cc30c92d798171212b0b6800f47f90c3338",
+      "bytes": 4266
+    },
+    {
+      "path": "TICKET_INDEX.md",
+      "sha256": "078c317a90d1ac5a71c32a2a6d6f69e791154230443c92d04b20fc50a4998991",
+      "bytes": 3398
+    },
+    {
+      "path": "TRACEABILITY_MATRIX.md",
+      "sha256": "d48b67a1591c79edc8db114696b4294681e4bd3a7a63c96de95bf8210eb552d5",
+      "bytes": 2297
+    },
+    {
+      "path": "current-skill-snapshot/SKILL.md",
+      "sha256": "08a02b1b90bf8dcf83c1ab8fa69afdf02cf5e428ec7210a770382842fec874d9",
+      "bytes": 15485
+    },
+    {
+      "path": "current-skill-snapshot/references/category-checklists.md",
+      "sha256": "d78638cf96804e2194d21f6faa649ea10a58e139d4978f3d64d95c11584d5597",
+      "bytes": 21921
+    },
+    {
+      "path": "current-skill-snapshot/references/evidence-and-risks.md",
+      "sha256": "5350041ec38de9dfb73ebabd368d3cc07f58ad32385c78cf55075be0455233da",
+      "bytes": 14964
+    },
+    {
+      "path": "current-skill-snapshot/references/research-protocol.md",
+      "sha256": "d789ca6433826c8651fb3530b88665e0aaaad455961ed1181c6072c610200c07",
+      "bytes": 12599
+    },
+    {
+      "path": "evals/AI_EXECUTION_RUNBOOK.md",
+      "sha256": "c90f380d265ab00be46eef950f1b9def6d1f04e4a5331f9a75915dca928ce73b",
+      "bytes": 3286
+    },
+    {
+      "path": "evals/CASE_AUTHORING_GUIDE.md",
+      "sha256": "c7d55d8a94bcd78da51ea3e84be3745650d1f7d10ea76219d577f2444dda666f",
+      "bytes": 3045
+    },
+    {
+      "path": "evals/CONTROL_MATRIX.md",
+      "sha256": "538002c221c6d888078bfbb18815ba45f009d0f54063e41c24c85fc5a1b3e2ab",
+      "bytes": 1313
+    },
+    {
+      "path": "evals/EXAMPLE_MANIFEST.json",
+      "sha256": "c94d440d7abf69772e57fa698d16e714dce72294a1daea824d6dcf3062e0f15e",
+      "bytes": 1172
+    },
+    {
+      "path": "evals/EXPERIMENT_PROTOCOL.md",
+      "sha256": "f925d65e40ce84820041d33ff06d8afe5a63221262bbc09d09f8c1974dad6275",
+      "bytes": 9739
+    },
+    {
+      "path": "evals/EXPERIMENT_REPORT_TEMPLATE.md",
+      "sha256": "17c44b23ee9e116d2cb6cc415c5b8358cb2242a010407e40a741749e9cec2eb0",
+      "bytes": 1683
+    },
+    {
+      "path": "evals/METRIC_DICTIONARY.md",
+      "sha256": "b1ccdd517f01230424e3ba02178d6ad319cd812da309d3d0851a19a025d2742a",
+      "bytes": 3876
+    },
+    {
+      "path": "evals/RELEASE_GATES.json",
+      "sha256": "1c7d5635c833c50d0f56e2e7380d6e751ef321b57fe355dc9ffc2c8ad973f1fc",
+      "bytes": 742
+    },
+    {
+      "path": "evals/SCORING_RUBRIC.md",
+      "sha256": "4f7ed9dcad0a7895822d10075ea53c7bf27c5258795d0edc9930654b84efb7e1",
+      "bytes": 3463
+    },
+    {
+      "path": "evals/SEED_CASES.jsonl",
+      "sha256": "73081c0354d005ff0a13a2c90cecd7ae19a74466deeccd0979b1aec8dd99bc25",
+      "bytes": 21314
+    },
+    {
+      "path": "evals/SMOKE_RUN_PLAN.jsonl",
+      "sha256": "e3a2ef8e16a5c6dbd534b980d8586160666618624a3a7c63d06946f1b4bc8e19",
+      "bytes": 31232
+    },
+    {
+      "path": "method-snapshot/METHOD_HASHES.txt",
+      "sha256": "de7858f2086fbc21bc17ea9cde7d1cf3c5e1f1ae48fc8627e020fa0e49d92f3f",
+      "bytes": 335
+    },
+    {
+      "path": "method-snapshot/to-spec/SKILL.md",
+      "sha256": "7d7fd04f7e47b8ebac52abe1497725570cbc1c15a56c673fe386950f95931cfb",
+      "bytes": 3110
+    },
+    {
+      "path": "method-snapshot/to-spec/agents/openai.yaml",
+      "sha256": "55037139831219743dda1f716fe69eab3366e922529f69cc988fea3b1d34c74a",
+      "bytes": 140
+    },
+    {
+      "path": "method-snapshot/to-tickets/SKILL.md",
+      "sha256": "b9478faa82b40c653bba2ea110682b5ae22a6736e4600768ae158c17db861ae2",
+      "bytes": 5812
+    },
+    {
+      "path": "method-snapshot/to-tickets/agents/openai.yaml",
+      "sha256": "e396b8caaf6cdd95c94cf707a7ca2fa5c3a04b37ae5d4301b5b360a7ff7a34cb",
+      "bytes": 151
+    },
+    {
+      "path": "schemas/annotation-record.schema.json",
+      "sha256": "15647b30cb9bef58953ec1649479b1f1188bf1900da4bdd6eb22d5d5e084c2f6",
+      "bytes": 1443
+    },
+    {
+      "path": "schemas/claim-record.schema.json",
+      "sha256": "c55ca72a0b462770fcb4de6e693524645ab16928156e0534b733c1f3c8684cfd",
+      "bytes": 1388
+    },
+    {
+      "path": "schemas/decision-record.schema.json",
+      "sha256": "a968afaa1af5b16da0461b19cbed2af9d6dc4b33787c952308ec1f2446ba8eb5",
+      "bytes": 2520
+    },
+    {
+      "path": "schemas/eval-case.schema.json",
+      "sha256": "af635fa2cb9fcbb4752311d8f0e289660a7aae93fed1d94723da754adf759464",
+      "bytes": 1059
+    },
+    {
+      "path": "schemas/experiment-manifest.schema.json",
+      "sha256": "bf299b792cff435009b8eea7e250a047a526e33d308f46826cf15b58048cdc24",
+      "bytes": 1005
+    },
+    {
+      "path": "schemas/product-entity.schema.json",
+      "sha256": "12ffe7ea609db298f9fd57677b8c377e69b7d514b27c5bd0aa4aff5fa21b94ad",
+      "bytes": 2494
+    },
+    {
+      "path": "schemas/run-record.schema.json",
+      "sha256": "b08a07e1a14913de1ddec1d18958c87de1631ea7db069945c006a7b38e1c8651",
+      "bytes": 1221
+    },
+    {
+      "path": "schemas/source-record.schema.json",
+      "sha256": "fa2a90c4d5d4fc8a207e21ad040eaae0209f3f31448e2da44236aed7c9e927d0",
+      "bytes": 1316
+    },
+    {
+      "path": "scripts/evaluate_gates.py",
+      "sha256": "99ffd25dbe5d71f0dda093be88bc84197d0c833b275c8debf03792f68eee113a",
+      "bytes": 1615
+    },
+    {
+      "path": "scripts/randomize_plan.py",
+      "sha256": "65bc6ab8738077577ff3dd9cf116e576b7bd5fa45a503edc57d64b22f035ea6c",
+      "bytes": 1567
+    },
+    {
+      "path": "scripts/score_annotations.py",
+      "sha256": "ca0f5c70adffaf5ea291ca264eb2f37e36ed9df9487e504036be419ed2dc3b53",
+      "bytes": 3100
+    },
+    {
+      "path": "scripts/selftest.py",
+      "sha256": "2734b8324a5d51f19d711c85042ff4983b97b50d7361998b27444f3e34fbbbfa",
+      "bytes": 3757
+    },
+    {
+      "path": "scripts/sensitivity_reference.py",
+      "sha256": "8e192c97144e72ea0db6907d49f43d0689d715503e3947f012cbed638df11aae",
+      "bytes": 934
+    },
+    {
+      "path": "scripts/validate_bundle.py",
+      "sha256": "e5567a487c24e18ded4635f2d40c92609f1aab2d9b350693509b529037aba703",
+      "bytes": 2655
+    },
+    {
+      "path": "tickets/01-freeze-uploaded-baseline-and-create-the-executable-evaluation-seam.md",
+      "sha256": "959cf925c1de21d2a298cf11cc2663ff87679c59a0e4d99877d550059676fb06",
+      "bytes": 2019
+    },
+    {
+      "path": "tickets/02-define-machine-readable-evaluation-cases-and-immutable-manifests.md",
+      "sha256": "63a70c666d81378bea35733c114c69cf1de00854c0c34c7042b50b438a8f61b3",
+      "bytes": 1929
+    },
+    {
+      "path": "tickets/03-add-evaluator-positive-and-sham-controls.md",
+      "sha256": "161b6d9a8bfbd266f07f6eb7bc931433b57c1d2d2c25fd1677901f976daaa3f9",
+      "bytes": 1919
+    },
+    {
+      "path": "tickets/04-replace-h-s-with-three-constraint-classes.md",
+      "sha256": "21f6f121370bd5e8ce5f4f88cf3ccec4f9131fd92fe7e49906310c056ee42161",
+      "bytes": 1810
+    },
+    {
+      "path": "tickets/05-introduce-claim-evidence-ledger-with-explicit-unknown-and-conflict-states.md",
+      "sha256": "817b3da552285fc0b7f427fd1df6d5e83cfae2b0cd1e40f46f3d69232f1d59b7",
+      "bytes": 1817
+    },
+    {
+      "path": "tickets/06-replace-universal-l1-l4-truth-ranking-with-claim-specific-evidence-roles.md",
+      "sha256": "bd4277e018847f946684c3837ab02c28d4d58906b6b160b0586d186dc2578188",
+      "bytes": 1907
+    },
+    {
+      "path": "tickets/07-implement-s-a-b-u-evidence-confidence-semantics-and-separate-maturity-labels.md",
+      "sha256": "54d2786a41f12db4a865a39b972e997ad9596d58afa391d49a4ca37d33723ebf",
+      "bytes": 1895
+    },
+    {
+      "path": "tickets/08-resolve-canonical-product-region-sku-revision-and-batch.md",
+      "sha256": "719834f243ffb13c927d162d14ac96480d3bdb48cbfacfee8ecfcbadbfd64166",
+      "bytes": 1801
+    },
+    {
+      "path": "tickets/09-add-provenance-and-corporate-role-graph.md",
+      "sha256": "fc25e045d91d614bb90a0b1181342eeeff9269c763f72e390b328e7f43295477",
+      "bytes": 1770
+    },
+    {
+      "path": "tickets/10-add-origin-and-temporal-semantics-without-inference-shortcuts.md",
+      "sha256": "15ad43ccf546bb5efa6618cb4ebe7bbcbb448a03251ad1b7a1ee78a00edcd204",
+      "bytes": 1825
+    },
+    {
+      "path": "tickets/11-implement-r0-r3-research-budget-selection.md",
+      "sha256": "f609f4796440829eb9bfc5c05a234c59f78292a290c799d9f47ed9a30145148e",
+      "bytes": 1873
+    },
+    {
+      "path": "tickets/12-use-dynamic-candidate-count-and-marginal-information-stop-rule.md",
+      "sha256": "e30722141d06029f080731af4a188c1a86577dcca4fe89f8c44f3c6c32688170",
+      "bytes": 1827
+    },
+    {
+      "path": "tickets/13-replace-incident-count-rules-with-scoped-safety-signal-adjudication.md",
+      "sha256": "6b50bb3b1281ce201ff8009f47f76aac63f7b240ff3d35d7e6d61d54f36ce410",
+      "bytes": 1866
+    },
+    {
+      "path": "tickets/14-separate-global-evidence-scope-from-purchase-and-output-market-scope.md",
+      "sha256": "9e1df65854a89e6d4b40afa53c35ee95e8cf026fa6bfd2c715a29058544cae47",
+      "bytes": 1829
+    },
+    {
+      "path": "tickets/15-make-round-1-adaptive-and-cap-the-conversation-at-three-rounds.md",
+      "sha256": "d7923bd4526fb1d48063ac0b48061b00964883ad1f53657d2d6c3cdc385f82ae",
+      "bytes": 1816
+    },
+    {
+      "path": "tickets/16-make-round-2-search-informed-and-optional.md",
+      "sha256": "734a64fb2a615beb1a5071774b0540ae20f0a8c3874485bbf359ea443ae931c5",
+      "bytes": 1749
+    },
+    {
+      "path": "tickets/17-make-used-discontinued-recommendations-category-aware.md",
+      "sha256": "1f414435f8cb00654290917977dbb47a73a3292caaddbd81bb02f7c312690982",
+      "bytes": 1857
+    },
+    {
+      "path": "tickets/18-define-strict-current-cross-sectional-and-historical-price-semantics.md",
+      "sha256": "22ebd5499050407fff5f5d24eed4298f2cd408b802d3757eacd582858af3d38c",
+      "bytes": 1893
+    },
+    {
+      "path": "tickets/19-add-cross-border-landed-cost-and-compatibility-treatment.md",
+      "sha256": "265602e3daf20a5e92d561db12823bfd5c9b2bf0aa5773d2600a3c5b8c7b4ac9",
+      "bytes": 1775
+    },
+    {
+      "path": "tickets/20-deliver-concise-decision-first-output-with-dynamic-candidates.md",
+      "sha256": "0ddaa46bb1d889ba77998186927b03f5ff448b8d4774373e1555d1ff4d665c38",
+      "bytes": 1843
+    },
+    {
+      "path": "tickets/21-contract-legacy-l1-l4-and-mature-a-blackhorse-b-behavior.md",
+      "sha256": "fd4f1a4b507b9cf8498e72850ea5ee5bb65afcc2bf9b8ce63fda3e9351e018f9",
+      "bytes": 1741
+    },
+    {
+      "path": "tickets/22-build-official-domestic-and-global-source-routing-playbooks.md",
+      "sha256": "5eb994973eeb08db9203881d2e0d9119ea74c866be702ae12c07e82fa062a04d",
+      "bytes": 1919
+    },
+    {
+      "path": "tickets/23-record-commercial-relationships-sample-provenance-and-source-conflicts.md",
+      "sha256": "de6306a75d4e709f41cf337251b705f1ebe7ecb8be50397a4de17448361cd16e",
+      "bytes": 1898
+    },
+    {
+      "path": "tickets/24-use-pareto-first-ranking-and-explicit-preference-weights.md",
+      "sha256": "1e6412cbe9bfca22b931e831338f3db769cb7dbd2c61f73b6a07a0c990a20743",
+      "bytes": 1825
+    },
+    {
+      "path": "tickets/25-implement-deterministic-sensitivity-flip-point-analysis.md",
+      "sha256": "98bf47414dc6b75ffe02eaf4d54f247e9b7e1abd1bc30e75e010afe7bc11cc70",
+      "bytes": 1827
+    },
+    {
+      "path": "tickets/26-make-cost-of-pivot-analysis-conditional-by-changed-architecture.md",
+      "sha256": "04a1d22c9a03feb86329b5c3b452f6752872c2685fe1d3cc71cbe448277f6b82",
+      "bytes": 1755
+    },
+    {
+      "path": "tickets/27-modularize-category-knowledge-as-live-verification-playbooks.md",
+      "sha256": "38091edbeeb892630726422bd9daa421fd299b8dd3b34cbda8da115241b47166",
+      "bytes": 1901
+    },
+    {
+      "path": "tickets/28-replace-high-position-anti-sycophancy-with-truth-first-correction-protocol.md",
+      "sha256": "3e8edeaa66cc501ccf432c735d51aa2577937801db2de1ec7218eea6e2c1a9e6",
+      "bytes": 1812
+    },
+    {
+      "path": "tickets/29-treat-retrieved-pages-and-documents-as-untrusted-evidence-data.md",
+      "sha256": "d6d9e573d26cc4dcef3f55f23a5b8bb361468163f6ac702594bbfe9bc770cf9b",
+      "bytes": 1808
+    },
+    {
+      "path": "tickets/30-add-explicit-degraded-modes-for-source-tool-unavailability.md",
+      "sha256": "cef9dc5de64ca938052f0c1778024e71cecd730c995ac2c9387c58cb92bca59b",
+      "bytes": 1787
+    },
+    {
+      "path": "tickets/31-build-deterministic-automated-scorers-for-objective-case-assertions.md",
+      "sha256": "2462fd204897a82e7ce6afb10295339ce601ea3642be6eea5dde7b7bd697a095",
+      "bytes": 1895
+    },
+    {
+      "path": "tickets/32-create-blinded-human-factual-and-usefulness-adjudication.md",
+      "sha256": "79b77edafa432a74731b207d8ec2e397d40bd3dafea2e1833a795fabea893ce8",
+      "bytes": 1821
+    },
+    {
+      "path": "tickets/33-add-freshness-guards-for-static-references-and-runtime-temporal-facts.md",
+      "sha256": "62b3377621e8cb02b12fe582eb57ef05b74008b2ad7f5ed4a3363e4a2aeaf2fe",
+      "bytes": 1827
+    },
+    {
+      "path": "tickets/34-run-the-first-real-paired-baseline-full-ablation-experiment.md",
+      "sha256": "e6fc7aa8fec128bafca29d7396e47985e95942e800964db6dfb9e17703531911",
+      "bytes": 1889
+    },
+    {
+      "path": "tickets/35-compute-paired-statistics-and-feature-specific-ablation-interpretations.md",
+      "sha256": "bde95d27328afdf3dd16fa2e2cb826fe1395c53281fa44c67331b4cbb7b4d6c6",
+      "bytes": 1890
+    },
+    {
+      "path": "tickets/36-enforce-preregistered-release-gates.md",
+      "sha256": "aef540dd37b405bc365c81d938c60bb2456f62cdb423ffc6df07770252102226",
+      "bytes": 1771
+    },
+    {
+      "path": "tickets/37-validate-target-skill-packaging-and-declare-multi-runtime-capability-honestly.md",
+      "sha256": "8a227bdb1ecee573d06b9f2f3948ceb6611e7363249eff56cc10178ace29bfcd",
+      "bytes": 1889
+    },
+    {
+      "path": "tickets/38-govern-community-category-contributions.md",
+      "sha256": "fc5c0a62d159bddb8db918d1a6b7e8e1122df98b515ac2aac19c22a286b170e1",
+      "bytes": 1842
+    },
+    {
+      "path": "tickets/39-run-cross-runtime-model-regression-for-every-compatibility-claim.md",
+      "sha256": "530a29fc3f2d1ba72b247f65749a3d212077fb19d191ef42ad48c93674ae9cf3",
+      "bytes": 1848
+    },
+    {
+      "path": "tickets/40-publish-the-v1-0-evidence-dossier-and-only-then-claim-measured-improvement.md",
+      "sha256": "a10cbece906b4caf84dacf251b41c1c45b834812192f27d22fa3bceff0dc8401",
+      "bytes": 1980
+    }
+  ]
+}

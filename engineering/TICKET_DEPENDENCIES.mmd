@@ -1,0 +1,136 @@
+flowchart TD
+  T01["01 Freeze uploaded baseline and create the executable evaluation seam"]
+  T02["02 Define machine-readable evaluation cases and immutable manifests"]
+  T01 --> T02
+  T03["03 Add evaluator positive and sham controls"]
+  T02 --> T03
+  T04["04 Replace H/S with three constraint classes"]
+  T01 --> T04
+  T05["05 Introduce claim/evidence ledger with explicit unknown and conflict states"]
+  T01 --> T05
+  T06["06 Replace universal L1-L4 truth ranking with claim-specific evidence roles"]
+  T05 --> T06
+  T07["07 Implement S/A/B/U evidence-confidence semantics and separate maturity labels"]
+  T06 --> T07
+  T08["08 Resolve Canonical Product, Region SKU, Revision, and Batch"]
+  T05 --> T08
+  T09["09 Add provenance and corporate-role graph"]
+  T08 --> T09
+  T10["10 Add origin and temporal semantics without inference shortcuts"]
+  T08 --> T10
+  T09 --> T10
+  T11["11 Implement R0-R3 research-budget selection"]
+  T01 --> T11
+  T04 --> T11
+  T05 --> T11
+  T12["12 Use dynamic candidate count and marginal-information stop rule"]
+  T06 --> T12
+  T11 --> T12
+  T13["13 Replace incident-count rules with scoped safety-signal adjudication"]
+  T06 --> T13
+  T08 --> T13
+  T10 --> T13
+  T14["14 Separate global evidence scope from purchase and output market scope"]
+  T08 --> T14
+  T10 --> T14
+  T15["15 Make Round 1 adaptive and cap the conversation at three rounds"]
+  T04 --> T15
+  T11 --> T15
+  T14 --> T15
+  T16["16 Make Round 2 search-informed and optional"]
+  T12 --> T16
+  T15 --> T16
+  T17["17 Make used/discontinued recommendations category-aware"]
+  T13 --> T17
+  T16 --> T17
+  T18["18 Define strict current, cross-sectional, and historical price semantics"]
+  T06 --> T18
+  T08 --> T18
+  T10 --> T18
+  T19["19 Add cross-border landed-cost and compatibility treatment"]
+  T14 --> T19
+  T18 --> T19
+  T20["20 Deliver concise decision-first output with dynamic candidates"]
+  T07 --> T20
+  T12 --> T20
+  T18 --> T20
+  T21["21 Contract legacy L1-L4 and mature-A/blackhorse-B behavior"]
+  T07 --> T21
+  T20 --> T21
+  T22["22 Build official domestic and global source-routing playbooks"]
+  T09 --> T22
+  T10 --> T22
+  T13 --> T22
+  T14 --> T22
+  T23["23 Record commercial relationships, sample provenance, and source conflicts"]
+  T05 --> T23
+  T06 --> T23
+  T22 --> T23
+  T24["24 Use Pareto-first ranking and explicit preference weights"]
+  T04 --> T24
+  T12 --> T24
+  T20 --> T24
+  T25["25 Implement deterministic sensitivity flip-point analysis"]
+  T24 --> T25
+  T26["26 Make cost-of-pivot analysis conditional by changed architecture"]
+  T04 --> T26
+  T24 --> T26
+  T27["27 Modularize category knowledge as live-verification playbooks"]
+  T06 --> T27
+  T11 --> T27
+  T22 --> T27
+  T28["28 Replace “high-position anti-sycophancy” with truth-first correction protocol"]
+  T05 --> T28
+  T23 --> T28
+  T29["29 Treat retrieved pages and documents as untrusted evidence data"]
+  T05 --> T29
+  T22 --> T29
+  T30["30 Add explicit degraded modes for source/tool unavailability"]
+  T11 --> T30
+  T22 --> T30
+  T23 --> T30
+  T31["31 Build deterministic automated scorers for objective case assertions"]
+  T02 --> T31
+  T04 --> T31
+  T08 --> T31
+  T18 --> T31
+  T25 --> T31
+  T32["32 Create blinded human factual and usefulness adjudication"]
+  T02 --> T32
+  T05 --> T32
+  T31 --> T32
+  T33["33 Add freshness guards for static references and runtime temporal facts"]
+  T10 --> T33
+  T22 --> T33
+  T27 --> T33
+  T34["34 Run the first real paired baseline/full/ablation experiment"]
+  T03 --> T34
+  T20 --> T34
+  T21 --> T34
+  T23 --> T34
+  T25 --> T34
+  T28 --> T34
+  T29 --> T34
+  T30 --> T34
+  T31 --> T34
+  T32 --> T34
+  T33 --> T34
+  T35["35 Compute paired statistics and feature-specific ablation interpretations"]
+  T34 --> T35
+  T36["36 Enforce preregistered release gates"]
+  T35 --> T36
+  T37["37 Validate target Skill packaging and declare multi-runtime capability honestly"]
+  T36 --> T37
+  T38["38 Govern community category contributions"]
+  T27 --> T38
+  T33 --> T38
+  T36 --> T38
+  T39["39 Run cross-runtime/model regression for every compatibility claim"]
+  T30 --> T39
+  T36 --> T39
+  T37 --> T39
+  T40["40 Publish the v1.0 evidence dossier and only then claim measured improvement"]
+  T35 --> T40
+  T36 --> T40
+  T38 --> T40
+  T39 --> T40

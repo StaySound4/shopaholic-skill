@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shopaholic.product-entity.v1",
+  "title": "Shopaholic Product Entity",
+  "type": "object",
+  "required": ["entity_id", "canonical_product", "identity_confidence"],
+  "properties": {
+    "entity_id": {"type": "string", "minLength": 1},
+    "canonical_product": {
+      "type": "object",
+      "required": ["brand", "model_name"],
+      "properties": {
+        "brand": {"type": ["string", "null"]},
+        "model_name": {"type": "string"},
+        "model_code": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "region_sku": {"type": ["string", "null"]},
+    "region": {"type": ["string", "null"]},
+    "revision": {"type": ["string", "null"]},
+    "batch": {"type": ["string", "null"]},
+    "identifiers": {
+      "type": "object",
+      "additionalProperties": {"type": ["string", "array", "null"]}
+    },
+    "dates": {
+      "type": "object",
+      "properties": {
+        "announcement_date": {"type": ["string", "null"], "format": "date"},
+        "first_sale_date": {"type": ["string", "null"], "format": "date"},
+        "regional_first_sale_date": {"type": ["string", "null"], "format": "date"},
+        "certification_date": {"type": ["string", "null"], "format": "date"},
+        "revision_start_date": {"type": ["string", "null"], "format": "date"},
+        "batch_window": {"type": ["string", "null"]},
+        "eol_date": {"type": ["string", "null"], "format": "date"}
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "brand_owner": {"type": ["string", "null"]},
+        "trademark_owner": {"type": ["string", "null"]},
+        "regulatory_applicant": {"type": ["string", "null"]},
+        "manufacturer": {"type": ["string", "null"]},
+        "factory": {"type": ["string", "null"]},
+        "odm_oem": {"type": ["string", "null"]},
+        "importer": {"type": ["string", "null"]},
+        "distributor": {"type": ["string", "null"]},
+        "seller": {"type": ["string", "null"]},
+        "parent_company": {"type": ["string", "null"]},
+        "country_of_origin": {"type": ["string", "null"]},
+        "assembly_country": {"type": ["string", "null"]},
+        "rebadging_type": {
+          "type": ["string", "null"],
+          "enum": ["none", "public_tooling_rebadge", "oem_original", "proprietary", null]
+        },
+        "channel_risk": {
+          "type": ["string", "null"],
+          "enum": ["authorized", "parallel_import", "export_return", "oem_bulk_pack", "unknown", null]
+        }
+      },
+      "additionalProperties": false
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["standard_or_cert_name", "status"],
+        "properties": {
+          "standard_or_cert_name": {"type": "string"},
+          "jurisdiction": {"type": ["string", "null"], "enum": ["china", "north_america", "eu", "japan", "international", "other", null]},
+          "certificate_id": {"type": ["string", "null"]},
+          "issuing_body": {"type": ["string", "null"]},
+          "status": {"type": "string", "enum": ["active", "upcoming", "superseded", "repealed", "unverified", "revoked", "fake_claim"]},
+          "verification_source": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "physical_verification_rule": {"type": ["string", "null"]},
+    "identity_confidence": {"enum": ["high", "medium", "low", "unresolved"]},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

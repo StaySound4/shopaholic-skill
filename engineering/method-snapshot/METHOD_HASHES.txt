@@ -1,0 +1,2 @@
+7d7fd04f7e47b8ebac52abe1497725570cbc1c15a56c673fe386950f95931cfb  /mnt/data/shopaholic_spec_rebuild/output/shopaholic-v1-engineering/method-snapshot/to-spec/SKILL.md
+b9478faa82b40c653bba2ea110682b5ae22a6736e4600768ae158c17db861ae2  /mnt/data/shopaholic_spec_rebuild/output/shopaholic-v1-engineering/method-snapshot/to-tickets/SKILL.md

@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shopaholic.decision-record.v1",
+  "title": "Shopaholic Decision Record",
+  "type": "object",
+  "required": ["decision_id", "request", "scopes", "research_budget", "constraints", "candidates", "claims", "final"],
+  "properties": {
+    "decision_id": {"type": "string"},
+    "request": {"type": "string"},
+    "scopes": {
+      "type": "object",
+      "required": ["evidence_scope", "purchase_scope", "output_scope"],
+      "properties": {
+        "evidence_scope": {"enum": ["global", "cn", "overseas", "restricted"]},
+        "purchase_scope": {"enum": ["cn", "overseas", "both"]},
+        "output_scope": {"enum": ["cn", "overseas", "combined"]}
+      },
+      "additionalProperties": false
+    },
+    "research_budget": {"enum": ["R0", "R1", "R2", "R3"]},
+    "research_budget_reason": {"type": "string"},
+    "constraints": {
+      "type": "object",
+      "required": ["safety_compatibility_hard", "user_declared_hard", "soft_preference"],
+      "properties": {
+        "safety_compatibility_hard": {"type": "array", "items": {"type": "string"}},
+        "user_declared_hard": {"type": "array", "items": {"type": "string"}},
+        "soft_preference": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "questions_asked": {"type": "array", "items": {"type": "string"}},
+    "used_preference": {
+      "type": ["string", "null"],
+      "enum": ["new_only", "used_accepted", "dual_track", "unspecified", "category_conditional", null]
+    },
+    "presentation_layout": {
+      "type": ["string", "null"],
+      "enum": ["standard_matrix", "direct_top_pick", "dual_market_split", "sparse_uncertainty", null]
+    },
+    "turn_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["turn"],
+        "properties": {
+          "turn": {"type": "integer", "minimum": 1, "maximum": 3},
+          "questions": {"type": "array", "items": {"type": "string"}},
+          "user_responses": {"type": "object"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "candidates": {"type": "array", "items": {"type": "string"}},
+    "candidate_pools": {
+      "type": "object",
+      "properties": {
+        "mature_recommendations": {"type": "array", "items": {"type": "string"}},
+        "conditional_recommendations": {"type": "array", "items": {"type": "string"}},
+        "watch_list": {"type": "array", "items": {"type": "string"}},
+        "excluded": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "pivot_cost": {
+      "type": ["object", "null"],
+      "properties": {
+        "pivoted_from": {"type": "string"},
+        "pivoted_to": {"type": "string"},
+        "workflow_cost": {"type": ["string", "null"]},
+        "kinetic_ergonomic_cost": {"type": ["string", "null"]},
+        "compute_ecosystem_cost": {"type": ["string", "null"]},
+        "fragility_tco_cost": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "excluded_candidates": {
+      "items": {
+        "type": "object",
+        "required": ["entity_id", "reason"],
+        "properties": {"entity_id": {"type": "string"}, "reason": {"type": "string"}},
+        "additionalProperties": false
+      }
+    },
+    "claims": {"type": "array", "items": {"type": "string"}},
+    "risk_signals": {"type": "array", "items": {"type": "string"}},
+    "price_observations": {"type": "array", "items": {"type": "object"}},
+    "ranking": {"type": "array", "items": {"type": "string"}},
+    "sensitivity": {"type": ["object", "null"]},
+    "degraded_mode": {"enum": ["none", "partial", "blocked", "source_unavailable"]},
+    "final": {
+      "type": "object",
+      "required": ["recommendation", "evidence_grade", "uncertainty"],
+      "properties": {
+        "recommendation": {"type": "string"},
+        "evidence_grade": {"enum": ["S", "A", "B", "U"]},
+        "uncertainty": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

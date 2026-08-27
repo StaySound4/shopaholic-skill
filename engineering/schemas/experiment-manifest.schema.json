@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shopaholic.experiment-manifest.v1",
+  "title": "Shopaholic Experiment Manifest",
+  "type": "object",
+  "required": ["experiment_id", "protocol_version", "created_at", "case_set_hash", "conditions", "replicates", "random_seed", "release_gates"],
+  "properties": {
+    "experiment_id": {"type": "string"},
+    "protocol_version": {"type": "string"},
+    "created_at": {"type": "string"},
+    "case_set_hash": {"type": "string"},
+    "conditions": {"type": "array", "minItems": 2, "items": {"type": "string"}, "uniqueItems": true},
+    "replicates": {"type": "integer", "minimum": 1},
+    "random_seed": {"type": "integer"},
+    "models": {"type": "array", "items": {"type": "string"}},
+    "runtimes": {"type": "array", "items": {"type": "string"}},
+    "release_gates": {"type": "object", "minProperties": 1},
+    "preregistered": {"type": "boolean"},
+    "notes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

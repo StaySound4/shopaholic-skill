@@ -1,0 +1,35 @@
+# 26 — Make cost-of-pivot analysis conditional by changed architecture
+
+**What to build:** Detect meaningful form-factor/workflow pivots and disclose only newly introduced relevant workflow, dynamic/safety, compute, fragility/TCO or category-specific costs.
+
+**Blocked by:** 04, 24
+
+**Status:** ready-for-agent
+
+## Acceptance criteria
+
+- [ ] Minor cosmetic/preference changes do not trigger full module.
+- [ ] Architecture change identifies affected dimensions and populates `pivot_cost` structured record (workflow, kinetic/ergonomic, compute/ecosystem, fragility/TCO).
+- [ ] Irrelevant dimensions are omitted.
+- [ ] Claims inside pivot analysis obey normal evidence rules.
+## Verification procedure
+
+Pass: action camera -> vehicle-mounted 360 triggers relevant costs. Adversarial: black -> white color change does not.
+
+Always execute verification in a fresh context. Save the exact prompt/input, raw output, structured record if available, tool/source trace, and pass/fail rationale. Include at least one expected-pass path and the adversarial path above. Do not repair a failed output before scoring.
+
+## Evidence to attach
+
+- Run ID(s) and case ID/version(s).
+- Raw unedited output(s).
+- Structured artifact(s) produced by this ticket when applicable.
+- Scorer/test output with command or reproducible invocation.
+- Source snapshot/locator and access status for evidence-dependent checks.
+- Short limitations/blockers note, even when all criteria pass.
+
+## Stop conditions
+
+- STOP if any blocker is incomplete.
+- STOP and mark the verification invalid if the only way to pass is to change the expected result after seeing the output.
+- STOP with a blocked state rather than guessing when a required authoritative fact/source/tool cannot be accessed.
+- Do not implement later tickets just to make this ticket look complete; open/follow the blocker instead.

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shopaholic.eval-case.v1",
+  "title": "Shopaholic Evaluation Case",
+  "type": "object",
+  "required": ["case_id", "version", "tier", "category", "prompt", "assertions"],
+  "properties": {
+    "case_id": {"type": "string", "pattern": "^[DFL]-[0-9]{3}$"},
+    "version": {"type": "integer", "minimum": 1},
+    "tier": {"enum": ["D", "F", "L"]},
+    "category": {"type": "string"},
+    "prompt": {"type": "string"},
+    "evidence_packet": {"type": ["array", "null"], "items": {"type": "object"}},
+    "assertions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["assertion_id", "kind", "expected"],
+        "properties": {
+          "assertion_id": {"type": "string"},
+          "kind": {"type": "string"},
+          "expected": {}
+        },
+        "additionalProperties": false
+      }
+    },
+    "human_review_required": {"type": "boolean"},
+    "notes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

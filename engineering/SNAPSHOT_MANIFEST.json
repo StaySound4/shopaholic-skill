@@ -1,0 +1,25 @@
+{
+  "snapshot": "uploaded-shopaholic.7z",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "sha256": "08a02b1b90bf8dcf83c1ab8fa69afdf02cf5e428ec7210a770382842fec874d9",
+      "bytes": 15485
+    },
+    {
+      "path": "references/category-checklists.md",
+      "sha256": "d78638cf96804e2194d21f6faa649ea10a58e139d4978f3d64d95c11584d5597",
+      "bytes": 21921
+    },
+    {
+      "path": "references/evidence-and-risks.md",
+      "sha256": "5350041ec38de9dfb73ebabd368d3cc07f58ad32385c78cf55075be0455233da",
+      "bytes": 14964
+    },
+    {
+      "path": "references/research-protocol.md",
+      "sha256": "d789ca6433826c8651fb3530b88665e0aaaad455961ed1181c6072c610200c07",
+      "bytes": 12599
+    }
+  ]
+}

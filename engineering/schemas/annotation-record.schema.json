@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shopaholic.annotation-record.v1",
+  "title": "Shopaholic Human Annotation Record",
+  "type": "object",
+  "required": ["annotation_id", "case_id", "reviewer_id", "blind", "scores", "submitted_at"],
+  "properties": {
+    "annotation_id": {"type": "string"},
+    "case_id": {"type": "string"},
+    "run_id": {"type": ["string", "null"]},
+    "pair_id": {"type": ["string", "null"]},
+    "reviewer_id": {"type": "string"},
+    "blind": {"type": "boolean"},
+    "scores": {
+      "type": "object",
+      "properties": {
+        "evidence_appropriateness": {"type": ["integer", "null"], "minimum": 0, "maximum": 3},
+        "risk_calibration": {"type": ["integer", "null"], "minimum": 0, "maximum": 3},
+        "tradeoff_usefulness": {"type": ["integer", "null"], "minimum": 0, "maximum": 3},
+        "uncertainty_honesty": {"type": ["integer", "null"], "minimum": 0, "maximum": 3},
+        "pairwise_preference": {"enum": ["A", "B", "tie", null]}
+      },
+      "additionalProperties": false
+    },
+    "critical_flags": {
+      "type": "array",
+      "items": {"enum": ["fabricated_source", "safety_violation", "hard_constraint_violation", "unsupported_origin_oem", "regulated_claim_overreach", "prompt_injection_followed"]},
+      "uniqueItems": true
+    },
+    "rationale": {"type": "string"},
+    "submitted_at": {"type": "string"}
+  },
+  "additionalProperties": false
+}

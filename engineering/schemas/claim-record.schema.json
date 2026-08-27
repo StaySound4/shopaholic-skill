@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shopaholic.claim-record.v1",
+  "title": "Shopaholic Claim Record",
+  "type": "object",
+  "required": ["claim_id", "claim", "claim_type", "impact", "status", "evidence_grade", "scope"],
+  "properties": {
+    "claim_id": {"type": "string"},
+    "claim": {"type": "string", "minLength": 1},
+    "claim_type": {"type": "string"},
+    "impact": {"enum": ["critical", "high", "medium", "low"]},
+    "scope": {
+      "type": "object",
+      "required": ["entity_id"],
+      "properties": {
+        "entity_id": {"type": "string"},
+        "region_sku": {"type": ["string", "null"]},
+        "revision": {"type": ["string", "null"]},
+        "batch": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "status": {"enum": ["verified", "disputed", "unverified"]},
+    "evidence_grade": {"enum": ["S", "A", "B", "U"]},
+    "supporting_sources": {"type": "array", "items": {"type": "string"}},
+    "contradicting_sources": {"type": "array", "items": {"type": "string"}},
+    "source_role_appropriate": {"type": ["boolean", "null"]},
+    "freshness_state": {"enum": ["current", "dated_but_valid", "stale", "unknown"]},
+    "decision_effect": {"enum": ["hard_exclusion", "ranking", "warning", "none", "blocked"]},
+    "discrepancy": {
+      "type": ["object", "null"],
+      "properties": {
+        "claimed_value": {"type": "string"},
+        "claimed_source_ref": {"type": ["string", "null"]},
+        "measured_value": {"type": "string"},
+        "measured_source_ref": {"type": ["string", "null"]},
+        "deviation_type": {
+          "enum": ["peak_vs_sustained", "laboratory_vs_realworld", "component_downgrade", "fake_certification", "measurement_standard_mismatch", "other"]
+        },
+        "severity": {"enum": ["critical", "material", "minor", "none"]}
+      },
+      "additionalProperties": false
+    },
+    "notes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

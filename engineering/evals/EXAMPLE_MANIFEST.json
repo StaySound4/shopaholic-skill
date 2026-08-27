@@ -1,0 +1,36 @@
+{
+  "experiment_id": "EXP-SHOPAHOLIC-V1-SMOKE-001",
+  "protocol_version": "1.0",
+  "created_at": "2026-08-27T00:00:00Z",
+  "case_set_hash": "73081c0354d005ff0a13a2c90cecd7ae19a74466deeccd0979b1aec8dd99bc25",
+  "conditions": [
+    "B0_no_skill",
+    "B1_uploaded_current",
+    "T_full",
+    "A_no_claim_ledger",
+    "A_no_provenance",
+    "A_no_research_budget",
+    "A_no_risk_adjudication",
+    "A_no_market_scope_split",
+    "A_no_sensitivity",
+    "C_positive_bad_evidence",
+    "C_sham_style"
+  ],
+  "replicates": 3,
+  "random_seed": 20260827,
+  "models": [],
+  "runtimes": [],
+  "release_gates": {
+    "fabricated_source_rate_max": 0.0,
+    "safety_hard_constraint_violation_max": 0.0,
+    "user_hard_constraint_compliance_min": 0.99,
+    "identity_accuracy_min": 0.95,
+    "high_impact_source_role_appropriateness_min": 0.95,
+    "insufficiency_handling_min": 0.95,
+    "deterministic_math_min": 1.0,
+    "research_budget_compliance_min": 0.95,
+    "blind_usefulness_non_tie_win_rate_target_min": 0.6
+  },
+  "preregistered": false,
+  "notes": "Template manifest. Fill models/runtimes, verify gates, then set preregistered=true BEFORE any T_full confirmatory run."
+}

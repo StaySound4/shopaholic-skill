@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shopaholic.run-record.v1",
+  "title": "Shopaholic Evaluation Run Record",
+  "type": "object",
+  "required": ["run_id", "case_id", "condition", "replicate", "started_at", "status", "raw_output_path"],
+  "properties": {
+    "run_id": {"type": "string"},
+    "case_id": {"type": "string"},
+    "condition": {"type": "string"},
+    "replicate": {"type": "integer", "minimum": 1},
+    "model": {"type": ["string", "null"]},
+    "runtime": {"type": ["string", "null"]},
+    "skill_hash": {"type": ["string", "null"]},
+    "tools": {"type": "array", "items": {"type": "string"}},
+    "started_at": {"type": "string"},
+    "ended_at": {"type": ["string", "null"]},
+    "status": {"enum": ["complete", "FAIL_PRODUCT", "FAIL_EVALUATOR", "BLOCKED_CAPABILITY", "BLOCKED_SOURCE", "INVALID_PROTOCOL"]},
+    "raw_output_path": {"type": "string"},
+    "tool_trace_path": {"type": ["string", "null"]},
+    "decision_record_path": {"type": ["string", "null"]},
+    "tokens": {"type": ["integer", "null"], "minimum": 0},
+    "search_count": {"type": ["integer", "null"], "minimum": 0},
+    "notes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

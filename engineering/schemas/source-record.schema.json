@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shopaholic.source-record.v1",
+  "title": "Shopaholic Source Record",
+  "type": "object",
+  "required": ["source_id", "source_role", "publisher", "retrieved_at", "locator"],
+  "properties": {
+    "source_id": {"type": "string"},
+    "source_role": {"enum": ["regulatory", "official_primary", "independent_measurement", "field_repair", "corporate_registry", "market_price"]},
+    "publisher": {"type": "string"},
+    "title": {"type": ["string", "null"]},
+    "locator": {"type": "string"},
+    "region": {"type": ["string", "null"]},
+    "published_at": {"type": ["string", "null"]},
+    "retrieved_at": {"type": "string"},
+    "evidence_scope": {"type": ["string", "null"]},
+    "sample_provenance": {"enum": ["not_applicable", "self_purchased", "manufacturer_supplied", "loaner", "unknown"]},
+    "commercial_relationships": {
+      "type": "array",
+      "items": {"enum": ["brand_owned", "seller", "affiliate", "sponsored", "advertising", "loaner", "unknown"]},
+      "uniqueItems": true
+    },
+    "access_state": {"enum": ["available", "partial", "blocked", "requires_account", "rate_limited", "unknown"]},
+    "content_hash": {"type": ["string", "null"]},
+    "notes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}
