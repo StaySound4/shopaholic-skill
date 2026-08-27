@@ -4,8 +4,8 @@
 
 **Blocked by:** 01 — 仓库级与跨运行时本地安装体系
 
-**Status:** ready-for-agent
+**Status:** closed
 
-- [ ] 在 `skills/shopaholic/references/research-protocol.md` 中确立【前置全品类广度探索规范 (Broad Discovery Invariant)】，严禁首轮预设价格上下限
-- [ ] 规范国家标准代号（GB/T）、物理底层极限与硬核社区讨论（Chiphell/酷安/专业拆解）的广度取证 SOP
-- [ ] 确立 3+2+1 全谱系初始扫描覆盖（10~15 款全价格带实体宽池），为 Turn 1 提问提供客观依据
+- [x] 在 `skills/shopaholic/references/research-protocol.md` 中确立【前置全品类广度探索规范 (Broad Discovery Invariant)】，严禁首轮预设价格上下限
+- [x] 规范国家标准代号（GB/T）、物理底层极限与硬核社区讨论（Chiphell/酷安/专业拆解）的广度取证 SOP
+- [x] 确立 3+2+1 全谱系初始扫描覆盖（10~15 款全价格带实体宽池），为 Turn 1 提问提供客观依据
