@@ -30,6 +30,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_07_confidence_maturity.py')])
         # 1i ticket 08 product entity hierarchy and scope isolation test
         run([sys.executable,str(ROOT/'scripts/test_ticket_08_product_entity.py')])
+        # 1j ticket 09 provenance and corporate role graph test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_09_provenance.py')])
         # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
