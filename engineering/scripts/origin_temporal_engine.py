@@ -71,13 +71,21 @@ def verify_standard_temporal_status(
         info = registry_data[standard_code]
         implementation_date_str = info.get("implementation_date")
         superseded_date_str = info.get("superseded_date")
+        repealed_date_str = info.get("repealed_date")
+        is_repealed = info.get("repealed", False)
         
         status = "active"
-        if implementation_date_str:
+        if is_repealed:
+            status = "repealed"
+        elif repealed_date_str:
+            rep_date = datetime.date.fromisoformat(repealed_date_str)
+            if ref_date >= rep_date:
+                status = "repealed"
+        elif implementation_date_str:
             imp_date = datetime.date.fromisoformat(implementation_date_str)
             if ref_date < imp_date:
                 status = "upcoming"
-        if superseded_date_str:
+        if status != "repealed" and superseded_date_str:
             sup_date = datetime.date.fromisoformat(superseded_date_str)
             if ref_date >= sup_date:
                 status = "superseded"

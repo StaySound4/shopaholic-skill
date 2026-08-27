@@ -44,7 +44,7 @@ class TestTicket10OriginTemporal(unittest.TestCase):
         self.assertEqual(year_2026, 2026)
 
     def test_03_standard_temporal_status_verified(self):
-        """Pass path: Evaluates active vs upcoming vs superseded standard statuses."""
+        """Pass path: Evaluates active vs upcoming vs superseded vs repealed standard statuses."""
         mock_registry = {
             "GB 4706.1-2024": {
                 "title": "Household Appliances Safety General Requirements",
@@ -55,17 +55,22 @@ class TestTicket10OriginTemporal(unittest.TestCase):
                 "title": "Household Appliances Safety General Requirements (2005)",
                 "implementation_date": "2006-08-01",
                 "superseded_date": "2026-08-01"
+            },
+            "OBSOLETE-STD-1998": {
+                "title": "Old Obsolete Standard",
+                "repealed": True
             }
         }
         
-        # In late August 2026: GB 4706.1-2024 is active, GB 4706.1-2005 is superseded
+        # In late August 2026: GB 4706.1-2024 is active, GB 4706.1-2005 is superseded, OBSOLETE-STD-1998 is repealed
         ref_aug_2026 = datetime.date(2026, 8, 28)
         res_new = verify_standard_temporal_status("GB 4706.1-2024", reference_date=ref_aug_2026, registry_data=mock_registry)
         res_old = verify_standard_temporal_status("GB 4706.1-2005", reference_date=ref_aug_2026, registry_data=mock_registry)
+        res_rep = verify_standard_temporal_status("OBSOLETE-STD-1998", reference_date=ref_aug_2026, registry_data=mock_registry)
         
         self.assertEqual(res_new["status"], "active")
         self.assertEqual(res_old["status"], "superseded")
-
+        self.assertEqual(res_rep["status"], "repealed")
     def test_04_adversarial_gtin_and_hq_cannot_assert_made_in_country(self):
         """Adversarial path: German GTIN prefix (400) + German Brand HQ with no factory evidence must remain unverified."""
         res = resolve_manufacturing_origin(
