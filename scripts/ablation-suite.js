@@ -73,17 +73,17 @@ const ABLATION_RESULTS = [
 
 function runAblationVerification() {
   console.log('================================================================================');
-  console.log('🚀 Shopaholic Multi-Agent Ablation Benchmark Suite');
-  console.log(`📋 Scenario: ${BENCHMARK_SCENARIO.title}`);
+  console.log('🚀 Shopaholic 多子代理消融实验自动化评测套件 (Ablation Benchmark Suite)');
+  console.log(`📋 场景用例: ${BENCHMARK_SCENARIO.title}`);
   console.log('================================================================================\n');
 
-  console.log('--- 1. Verification Invariants Check ---');
+  console.log('--- 1. 核心不变式与断言校验 (Verification Invariants Check) ---');
   BENCHMARK_SCENARIO.expected_invariants.forEach((inv, idx) => {
-    console.log(`  [✓] Invariant ${idx + 1}: ${inv}`);
+    console.log(`  [✓] 断言 ${idx + 1}: ${inv}`);
   });
   console.log('');
 
-  console.log('--- 2. Multi-Agent Ablation Significance Matrix ---');
+  console.log('--- 2. 多子代理消融显著性评分矩阵 (Significance Matrix) ---');
   console.table(
     ABLATION_RESULTS.map(r => ({
       '实验组别': r.name,
@@ -111,10 +111,10 @@ function runAblationVerification() {
 
   console.log('================================================================================');
   if (allPassed) {
-    console.log('✅ Ablation Benchmark PASSED: All refactored mechanisms demonstrate statistical necessity.');
-    console.log('📊 Quantified Gain: +80% Factual Recall, +100% Category Preservation, +100% Cost Disclosure.');
+    console.log('✅ 消融实验评测通过: 全部重构机制均证明具有不可替代的统计显著性与必要性。');
+    console.log('📊 量化增益: 事实召回率提升 +80%，品类保全率提升 +100%，隐性代价披露提升 +100%。');
   } else {
-    console.error('❌ Ablation Benchmark FAILED.');
+    console.error('❌ 消融实验评测失败。');
     process.exit(1);
   }
   console.log('================================================================================');

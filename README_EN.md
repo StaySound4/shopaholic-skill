@@ -74,33 +74,33 @@ npx StaySound4/shopaholic-skill
 
 ---
 
-## 🔍 Core Mechanism: How Domain Pre-Research Works
+## 🔍 Core Mechanism: How Defensive Search & Catalog Scanning Work
 
-Unlike generic AI assistants that rely on vague training memory, Shopaholic automatically executes **Phase 0: Domain Pre-Research** in the background before analyzing specific models:
+Unlike generic AI assistants that rely on outdated training memory and generate hallucinations about product lines, Shopaholic executes **Phase 0: Cognitive Zero-Trust & Bounded Catalog Sweeping (3+2+1 Scanning)** in the background:
 
 ```
-                ┌─────────────────────────────────────────────────────────────┐
-                │        【Phase 0: Automated Domain Pre-Research Protocol】   │
-                └──────────────────────────────┬──────────────────────────────┘
-                                               │
-        ┌──────────────────────────────────────┼──────────────────────────────────────┐
-        ▼                                      ▼                                      ▼
-【1. Manufacturing Principles】         【2. Statutory Standards】             【3. TCO & Failure Modes】
-- Audit core components & materials     - Sourced published standards          - Compute ongoing filter/part costs
-  (e.g., Fast-IPS packaging,             (3C certification, food-grade          - Cross-verify 3~12 month long-term
-   PID thermal control, cutter blades)    materials, energy efficiency ratings)   wear, solder fatigue & seal aging
-        │                                      │                                      │
-        └──────────────────────────────────────┼──────────────────────────────────────┘
-                                               │
-                                               ▼
-                ┌─────────────────────────────────────────────────────────────┐
-                │        【Objective Evaluation Baseline Established】          │
-                └─────────────────────────────────────────────────────────────┘
+                    ┌────────────── Target Category Root ──────────────┐
+                    │                                                  │
+         【Top 3 Market Incumbents】                         【Top 2 Emerging Pioneers】
+     (Full catalog sweep of active models/events)       (High-spec challengers & supply-chain brands)
+                    │                                                  │
+                    └──────────────── 【Top 1 OEM / Geek Source】 ──────┘
+                                  (Upstream solution providers & forums)
+                                                 │
+                                                 ▼
+                                  【Global Pool (10~15 Candidates)】
+                                                 │
+                                                 ▼
+                 ┌───────────────────────────────┴───────────────────────────────┐
+                 ▼                                                               ▼
+     【A-Tier: Mainstream Validated (3~5)】                          【B-Tier: Emerging Speculative (3~5)】
+     (Large-sample track record & teardowns)                         (BOM whitebox + L2 teardowns + Compromise alert)
 ```
 
-1. **Physical & Manufacturing Principles**: Identifies governing performance mechanisms (e.g., Heat-pump vs. condensing dryer; true GtG response vs. flicker-inducing MPRT; flat vs. conical burrs).
-2. **Published Standards & Baseline Compliance**: Verifies statutory safety requirements and quality standards, separating manufacturer slogans from baseline compliance.
-3. **Total Cost of Ownership & Long-Term Wear**: Calculates ongoing consumable costs and cross-verifies long-term defects (e.g., solder cracking, motor shaft wear, gasket degradation).
+1. **Cognitive Zero-Trust & Defensive Retrieval**: Strictly prohibits asserting that a brand "has no such product" based on internal memory; mandates $\ge 2$ rounds of temporal retrieval (2025/2026).
+2. **3+2+1 Catalog Sweeping**: Scans 3 major brands + 2 emerging brands + 1 OEM source to build a 10~15 model initial pool, delivering 6~10 representative candidates.
+3. **Dual-Track Evidence Matrix & BOM Whitebox**: Parallel presentation of A-tier mature products and B-tier high-spec newcomers with mandatory compromise disclosures.
+4. **Anti-Sycophancy & 4D Cost of Pivoting**: Maintains a high-status objective consultant persona upon corrections; enforces upfront accounting of workflow, safety, compute, and fragility TCO upon constraint drift.
 
 ---
 
@@ -110,13 +110,11 @@ Unlike generic AI assistants that rely on vague training memory, Shopaholic auto
 
 | Common Frustrations | How Shopaholic Solves It & Value Provided |
 |---|---|
-| **Unclear needs, unsure where to start** | **Clarify First**: Identifies critical constraints (space, users, fabrics, environment) before narrowing down the pool. |
-| **Too many proprietary marketing terms** | **Engineering Teardown**: Breaks down core mechanisms in plain language to explain real differences. |
-| **Overwhelming praise, hard to find real drawbacks** | **Truthful Disclosure**: Checks teardown data and verified user reports to surface hidden shortcomings and failure modes. |
-| **Niche/untested items promoted due to lack of bad reviews** | **Anti-Survivor Bias**: Imposes market verification tiers, unverified penalties, and single-incident fatal defect alerts. |
-| **Bestsellers that may not fit your specific needs** | **Counterfactual Analysis**: Explains why certain popular hits were not prioritized, clarifying exact use cases. |
-| **Cheap upfront price, but costly consumables / poor warranty** | **TCO & Channel Audit**: Evaluates 4-tier warranty channels, proprietary parts discontinuation risks, and liquidity depreciation. |
-
+| **Unclear/conflicting needs, prone to category elimination** | **Two-Phase Elicitation**: Extracts hard constraints & soft tastes in Phase 1; lets user choose delivery viewpoints in Phase 2. |
+| **Model claims a product does not exist (Hallucinations)** | **Defensive Search**: Mandatory multi-angle temporal retrieval across brand catalogs to prevent outdated assertions. |
+| **New high-spec flagships unfairly downgraded** | **Dual-Track Matrix**: Parallel A-tier and B-tier tables with BOM whitebox admission criteria. |
+| **AI sycophantically reverses stance after user pushback** | **Anti-Sycophancy Protocol**: Neutral fact intake and independent teardown verification without excessive apologies. |
+| **Unnoticed hidden costs when switching setups** | **4D Cost of Pivoting**: Enforces structured disclosure of workflow, dynamics, compute, and fragility TCO. |
 ---
 
 ## 📱 Live Examples (Real-World Dialogue)
@@ -252,9 +250,10 @@ shopaholic-skill/
 ├── LICENSE                    # MIT Open Source License
 ├── bin/
 │   └── cli.js                 # Cross-platform interactive installation utility
+├── scripts/
+│   └── ablation-suite.js      # Multi-agent ablation benchmark & automated evaluation harness
 ├── assets/
 │   └── logo.png               # Project official logo icon
-└── skills/
     └── shopaholic/
         ├── SKILL.md           # Master workflow specification and execution protocol
         └── references/        # Deep-dive knowledge modules
