@@ -27,6 +27,7 @@ Pass: seller offer supports price; official manual supports feature; VESA regist
 - **Artifacts created**: `engineering/scripts/evidence_role_router.py`, `engineering/scripts/test_ticket_06_evidence_roles.py`.
 - **Adversarial check**: 10 seller marketing pages claiming durability cannot verify a durability claim (0% bypass rate).
 - **Limitations**: None. Claim-specific evidence role routing operational.
+## Stop conditions
 
 - STOP if any blocker is incomplete.
 - STOP and mark the verification invalid if the only way to pass is to change the expected result after seeing the output.
