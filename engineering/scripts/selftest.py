@@ -20,7 +20,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_02_manifests.py')])
         # 1d ticket 03 positive and sham controls test
         run([sys.executable,str(ROOT/'scripts/test_ticket_03_controls.py')])
-        # 2 sensitivity reference
+        # 1e ticket 04 three-class constraints test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_04_constraints.py')])
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
         # 3 deterministic randomization
