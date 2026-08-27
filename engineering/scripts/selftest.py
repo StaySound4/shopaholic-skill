@@ -78,6 +78,8 @@ def main():
         run([sys.executable,str(ROOT/'scripts/test_ticket_31_scorer.py')])
         # 1ag ticket 32 blinded human review and adjudication test
         run([sys.executable,str(ROOT/'scripts/test_ticket_32_blinded_review.py')])
+        # 1ah ticket 33 freshness guards for static references and temporal facts test
+        run([sys.executable,str(ROOT/'scripts/test_ticket_33_freshness.py')])
         # 2 sensitivity reference
         p=run([sys.executable,str(ROOT/'scripts/sensitivity_reference.py'),'--a','90,60','--b','70,90','--weight','0.3'])
         assert abs(json.loads(p.stdout)['flip_weight_criterion1']-0.4)<1e-12
