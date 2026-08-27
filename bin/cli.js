@@ -9,8 +9,17 @@ if (!userHome) {
   process.exit(1);
 }
 
-const targetDir = path.join(userHome, '.agents', 'skills', 'shopaholic');
 const srcDir = path.join(__dirname, '..', 'skills', 'shopaholic');
+
+const targetRoots = [
+  path.join(userHome, '.agents', 'skills'),
+  path.join(userHome, '.claude', 'skills'),
+  path.join(userHome, '.omp', 'skills'),
+  path.join(userHome, '.omp', 'agent', 'skills'),
+  path.join(userHome, '.pi', 'skills'),
+  path.join(userHome, '.pi', 'agent', 'skills'),
+  path.join(userHome, '.codex', 'skills')
+];
 
 function copyDir(src, dest) {
   fs.mkdirSync(dest, { recursive: true });
@@ -25,14 +34,23 @@ function copyDir(src, dest) {
   }
 }
 
-try {
-  copyDir(srcDir, targetDir);
-  console.log('====================================================');
-  console.log('✅ Shopaholic Skill installed successfully!');
-  console.log(`📁 Installed location: ${targetDir}`);
-  console.log('💡 You can now use "shopaholic" skill in your AI agent.');
-  console.log('====================================================');
-} catch (err) {
-  console.error('❌ Installation failed:', err.message);
-  process.exit(1);
+console.log('====================================================');
+console.log('🚀 Installing/Updating Shopaholic Skill across agent runtimes...');
+console.log('====================================================');
+
+let installedCount = 0;
+for (const root of targetRoots) {
+  try {
+    const targetDir = path.join(root, 'shopaholic');
+    copyDir(srcDir, targetDir);
+    console.log(`✅ Synced to: ${targetDir}`);
+    installedCount++;
+  } catch (err) {
+    console.warn(`⚠️ Skipped ${root}: ${err.message}`);
+  }
 }
+
+console.log('====================================================');
+console.log(`🎉 Successfully synced to ${installedCount} runtime locations!`);
+console.log('💡 You can now use "shopaholic" skill in Pi, OMP, Claude Code, Codex, and OpenClaw.');
+console.log('====================================================');
