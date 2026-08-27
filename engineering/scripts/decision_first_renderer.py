@@ -10,10 +10,13 @@ from typing import Any, Dict, List, Optional
 
 EXTREME_BREVITY_PROMPTS = {
     "just tell me which one to buy",
+    "just tell me which one",
     "just tell me what to buy",
+    "direct recommendation",
     "直接告诉我买哪个",
     "只要一个推荐",
     "直接给答案",
+    "直接推荐",
     "one recommendation only"
 }
 

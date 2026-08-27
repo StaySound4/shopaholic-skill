@@ -18,10 +18,13 @@ from decision_first_renderer import (
 
 class TestTicket20DecisionFirst(unittest.TestCase):
     def test_01_extreme_brevity_single_decisive_choice(self):
-        """Pass path: 'just tell me what to buy' outputs single decisive top recommendation."""
-        query = "just tell me which one to buy"
-        self.assertTrue(is_extreme_brevity_requested(query))
+        """Pass path: 'just tell me which one' & 'direct recommendation' output single decisive top recommendation."""
+        self.assertTrue(is_extreme_brevity_requested("just tell me which one"))
+        self.assertTrue(is_extreme_brevity_requested("Give me a direct recommendation please"))
+        self.assertTrue(is_extreme_brevity_requested("直接告诉我买哪个"))
         
+        query = "just tell me which one"
+        self.assertTrue(is_extreme_brevity_requested(query))
         cands = [
             {"name": "Charger GaN 65W", "price": 69, "core_reason": "Dual-port, compact foldable plug, low ripple under load."}
         ]
