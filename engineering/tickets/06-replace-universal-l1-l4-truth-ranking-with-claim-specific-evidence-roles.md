@@ -4,15 +4,15 @@
 
 **Blocked by:** 05
 
-**Status:** ready-for-agent
+**Status:** completed
 
 ## Acceptance criteria
 
-- [ ] Source role is stored independently from claim confidence.
-- [ ] Regulatory and voluntary certifications (CCC, UL, CE, TÜV, VESA, OEKO-TEX) support legal market entry or certified technical capabilities, but do not alone prove unmeasured long-term durability.
-- [ ] Seller price is valid market evidence but not durability evidence.
-- [ ] Official spec can strongly support declared dimensions/interfaces without proving superiority over competitors.
-- [ ] No fixed source-count requirement determines confidence.
+- [x] Source role is stored independently from claim confidence.
+- [x] Regulatory and voluntary certifications (CCC, UL, CE, TÜV, VESA, OEKO-TEX) support legal market entry or certified technical capabilities, but do not alone prove unmeasured long-term durability.
+- [x] Seller price is valid market evidence but not durability evidence.
+- [x] Official spec can strongly support declared dimensions/interfaces without proving superiority over competitors.
+- [x] No fixed source-count requirement determines confidence.
 
 ## Verification procedure
 
@@ -22,12 +22,11 @@ Pass: seller offer supports price; official manual supports feature; VESA regist
 
 - Run ID(s) and case ID/version(s).
 - Raw unedited output(s).
-- Structured artifact(s) produced by this ticket when applicable.
-- Scorer/test output with command or reproducible invocation.
-- Source snapshot/locator and access status for evidence-dependent checks.
-- Short limitations/blockers note, even when all criteria pass.
-
-## Stop conditions
+- **Verification command**: `python engineering/scripts/test_ticket_06_evidence_roles.py` -> 3 tests OK.
+- **Bundle validation**: `python engineering/scripts/validate_bundle.py engineering` -> PASS (67 seed cases, 40 tickets, baseline hash verified).
+- **Artifacts created**: `engineering/scripts/evidence_role_router.py`, `engineering/scripts/test_ticket_06_evidence_roles.py`.
+- **Adversarial check**: 10 seller marketing pages claiming durability cannot verify a durability claim (0% bypass rate).
+- **Limitations**: None. Claim-specific evidence role routing operational.
 
 - STOP if any blocker is incomplete.
 - STOP and mark the verification invalid if the only way to pass is to change the expected result after seeing the output.

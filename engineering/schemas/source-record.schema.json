@@ -6,7 +6,7 @@
   "required": ["source_id", "source_role", "publisher", "retrieved_at", "locator"],
   "properties": {
     "source_id": {"type": "string"},
-    "source_role": {"enum": ["regulatory", "official_primary", "independent_measurement", "field_repair", "corporate_registry", "market_price"]},
+    "source_role": {"enum": ["regulatory", "voluntary_certification", "official_primary", "independent_measurement", "teardown_forensic", "field_repair", "corporate_registry", "market_price"]},
     "publisher": {"type": "string"},
     "title": {"type": ["string", "null"]},
     "locator": {"type": "string"},
