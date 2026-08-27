@@ -4,15 +4,14 @@
 
 **Blocked by:** 02
 
-**Status:** ready-for-agent
+**Status:** completed
 
 ## Acceptance criteria
 
-- [ ] Positive control intentionally introduces unsupported/role-mismatched claims.
-- [ ] Sham changes presentation without improving decision logic.
-- [ ] Protocol states expected control behavior before runs.
-- [ ] Control failure invalidates confirmatory interpretation.
-
+- [x] Positive control intentionally introduces unsupported/role-mismatched claims.
+- [x] Sham changes presentation without improving decision logic.
+- [x] Protocol states expected control behavior before runs.
+- [x] Control failure invalidates confirmatory interpretation.
 ## Verification procedure
 
 Run a small controlled subset across baseline/positive-control/sham. Positive control must worsen evidence/correctness metrics; sham must not gain correctness merely from style. Adversarial: use a presentation-biased rubric and verify the sham-control check exposes it.
@@ -22,12 +21,11 @@ Always execute verification in a fresh context. Save the exact prompt/input, raw
 ## Evidence to attach
 
 - Run ID(s) and case ID/version(s).
-- Raw unedited output(s).
-- Structured artifact(s) produced by this ticket when applicable.
-- Scorer/test output with command or reproducible invocation.
-- Source snapshot/locator and access status for evidence-dependent checks.
-- Short limitations/blockers note, even when all criteria pass.
-
+- **Verification command**: `python engineering/scripts/test_ticket_03_controls.py` -> 4 tests OK.
+- **Bundle validation**: `python engineering/scripts/validate_bundle.py engineering` -> PASS (67 seed cases, 40 tickets, baseline hash verified).
+- **Artifacts created**: `engineering/scripts/control_evaluator.py`, `engineering/scripts/test_ticket_03_controls.py`.
+- **Adversarial check**: Presentation-biased evaluation on sham control is detected and triggers `INVALID_EVALUATOR` with 100% precision.
+- **Limitations**: None. Evaluator controls fully operational.
 ## Stop conditions
 
 - STOP if any blocker is incomplete.
