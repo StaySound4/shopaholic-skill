@@ -7,16 +7,18 @@ import argparse, json, sys, uuid
 from pathlib import Path
 
 def create_claim_record(
-    claim_id: str | None,
-    claim: str,
-    claim_type: str,
-    impact: str,
-    entity_id: str,
+    claim_id: str | None = None,
+    claim: str = "",
+    claim_type: str = "",
+    impact: str = "medium",
+    entity_id: str = "",
+    scope: dict | None = None,
     region_sku: str | None = None,
     revision: str | None = None,
     batch: str | None = None,
     supporting_sources: list[str] | None = None,
     contradicting_sources: list[str] | None = None,
+    discrepancy: dict | None = None,
     claimed_value: str | None = None,
     claimed_source_ref: str | None = None,
     measured_value: str | None = None,
@@ -33,10 +35,18 @@ def create_claim_record(
     sup = supporting_sources or []
     contra = contradicting_sources or []
     
-    # Adjudicate status and evidence_grade
-    discrepancy = None
-    if claimed_value is not None or measured_value is not None:
-        discrepancy = {
+    # Resolve scope dictionary
+    final_scope = scope or {
+        "entity_id": entity_id,
+        "region_sku": region_sku,
+        "revision": revision,
+        "batch": batch
+    }
+    
+    # Resolve discrepancy dictionary
+    final_discrepancy = discrepancy
+    if final_discrepancy is None and (claimed_value is not None or measured_value is not None):
+        final_discrepancy = {
             "claimed_value": claimed_value or "unspecified",
             "claimed_source_ref": claimed_source_ref,
             "measured_value": measured_value or "unmeasured",
@@ -44,7 +54,7 @@ def create_claim_record(
             "deviation_type": deviation_type or "other",
             "severity": severity or "minor"
         }
-        
+    # Adjudicate status and evidence_grade
     if contra and sup:
         status = "disputed"
         evidence_grade = "B"
@@ -63,12 +73,7 @@ def create_claim_record(
         "claim": claim,
         "claim_type": claim_type,
         "impact": impact,
-        "scope": {
-            "entity_id": entity_id,
-            "region_sku": region_sku,
-            "revision": revision,
-            "batch": batch
-        },
+        "scope": final_scope,
         "status": status,
         "evidence_grade": evidence_grade,
         "supporting_sources": sup,
@@ -76,7 +81,7 @@ def create_claim_record(
         "source_role_appropriate": source_role_appropriate,
         "freshness_state": freshness_state,
         "decision_effect": decision_effect,
-        "discrepancy": discrepancy,
+        "discrepancy": final_discrepancy,
         "notes": notes
     }
     
@@ -94,6 +99,10 @@ def validate_claim_ledger_entry(record: dict) -> list[str]:
         if not isinstance(record["scope"], dict) or "entity_id" not in record["scope"]:
             errors.append("Scope must be an object containing 'entity_id'")
             
+    impact = record.get("impact")
+    if impact not in ["critical", "high", "medium", "low"]:
+        errors.append(f"Invalid impact '{impact}'")
+        
     status = record.get("status")
     if status not in ["verified", "disputed", "unverified"]:
         errors.append(f"Invalid status '{status}'")
@@ -102,6 +111,24 @@ def validate_claim_ledger_entry(record: dict) -> list[str]:
     if grade not in ["S", "A", "B", "U"]:
         errors.append(f"Invalid evidence_grade '{grade}'")
         
+    freshness = record.get("freshness_state")
+    if freshness and freshness not in ["current", "dated_but_valid", "stale", "unknown"]:
+        errors.append(f"Invalid freshness_state '{freshness}'")
+        
+    effect = record.get("decision_effect")
+    if effect and effect not in ["hard_exclusion", "ranking", "warning", "none", "blocked"]:
+        errors.append(f"Invalid decision_effect '{effect}'")
+        
+    disc = record.get("discrepancy")
+    if disc is not None and isinstance(disc, dict):
+        dev_type = disc.get("deviation_type")
+        valid_devs = ["peak_vs_sustained", "laboratory_vs_realworld", "component_downgrade", "fake_certification", "measurement_standard_mismatch", "other"]
+        if dev_type and dev_type not in valid_devs:
+            errors.append(f"Invalid discrepancy deviation_type '{dev_type}'")
+        sev = disc.get("severity")
+        if sev and sev not in ["critical", "material", "minor", "none"]:
+            errors.append(f"Invalid discrepancy severity '{sev}'")
+            
     # Invariant: If there are contradicting sources and no resolution, status cannot be verified
     if record.get("contradicting_sources") and status == "verified":
         errors.append("Contradicting sources exist but claim is marked verified without resolution")
