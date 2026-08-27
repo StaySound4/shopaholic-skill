@@ -27,6 +27,7 @@ Pass: budget<=3000 strictly excludes 3299 from final recommended picks; broad se
 - **Artifacts created**: `engineering/scripts/constraint_engine.py`, `engineering/scripts/test_ticket_04_constraints.py`.
 - **Adversarial check**: Soft preferences (e.g. color) cannot be misclassified as safety incompatibility.
 - **Limitations**: None. Three-class constraint separation and search headroom decoupling operational.
+## Stop conditions
 
 - STOP if any blocker is incomplete.
 - STOP and mark the verification invalid if the only way to pass is to change the expected result after seeing the output.

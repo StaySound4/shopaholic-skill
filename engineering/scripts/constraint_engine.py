@@ -6,7 +6,7 @@ enforcing strict candidate exclusion in final delivery while allowing broad sear
 import argparse, json, re, sys
 from pathlib import Path
 
-def classify_constraint(constraint_text: str, context_kind: str | None = None) -> str:
+def classify_constraint(constraint_text: str) -> str:
     """Classifies a constraint into one of the three canonical classes:
     1. safety_compatibility_hard: physical fit, voltage, safety/standards, recall, mandatory physical compatibility
     2. user_declared_hard: budget cap, brand exclusion, no-used, declared ecosystem dependency, purchase market
@@ -15,12 +15,10 @@ def classify_constraint(constraint_text: str, context_kind: str | None = None) -
     text_lower = constraint_text.lower().strip()
     
     # Soft preference indicators (e.g. "prefer", "would like", "nice to have")
-    soft_indicators = ["prefer", "like", "nice to have", "wish", "aesthetic", "color", "lighter is better", "sound"]
     if any(text_lower.startswith(s) or f" {s}" in text_lower for s in ["prefer", "nice to have", "wish"]):
         # Unless it explicitly specifies hard budget or safety
         if not any(k in text_lower for k in ["max budget", "must", "mandatory", "220v", "voltage", "recall", "exclude brand"]):
             return "soft_preference"
-            
     # Safety / Physical compatibility keywords
     safety_keywords = [
         "voltage", "220v", "110v", "safety", "fire", "recall", "certification", "3c", 
