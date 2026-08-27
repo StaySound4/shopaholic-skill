@@ -4,8 +4,6 @@ Maps calculated evaluation metrics directly to preregistered release gates.
 Strictly prevents critical safety/citation defects from being averaged away by usefulness,
 enforces immutability of preregistered gate thresholds, and blocks post-hoc threshold loosening.
 """
-import hashlib
-import json
 from typing import Any, Dict, List, Optional, Tuple
 
 DEFAULT_PREREGISTERED_GATES = {
@@ -103,18 +101,24 @@ def evaluate_release_gates(
 def attempt_gate_threshold_mutation(
     original_manifest: Dict[str, Any],
     mutated_gates: Dict[str, Any],
-    new_experiment_id: Optional[str] = None
+    new_experiment_id: Optional[str] = None,
+    new_protocol_version: Optional[str] = None
 ) -> Tuple[bool, Optional[str], Optional[Dict[str, Any]]]:
-    """Guards against mutating release gate thresholds without generating a new experiment ID."""
+    """Guards against mutating release gate thresholds without generating a new experiment ID and protocol version."""
     current_exp_id = original_manifest.get("experiment_id")
+    current_proto = original_manifest.get("protocol_version")
     
     if new_experiment_id is None or new_experiment_id == current_exp_id:
-        return False, f"Gate threshold mutation rejected! Lowering or changing gates requires a new experiment ID, not '{current_exp_id}'.", None
+        return False, f"Gate threshold mutation rejected! Changing gates requires a new experiment ID, not '{current_exp_id}'.", None
+
+    if new_protocol_version is None or new_protocol_version == current_proto:
+        return False, f"Gate threshold mutation rejected! Changing gates requires a new protocol version, not '{current_proto}'.", None
 
     new_manifest = dict(original_manifest)
     new_manifest["experiment_id"] = new_experiment_id
+    new_manifest["protocol_version"] = new_protocol_version
     new_manifest["release_gates"] = mutated_gates
-    new_manifest["notes"] = f"New experiment protocol branch created with modified gates under {new_experiment_id}."
+    new_manifest["notes"] = f"New experiment protocol branch created with modified gates under {new_experiment_id} (proto: {new_protocol_version})."
     
     return True, None, new_manifest
 

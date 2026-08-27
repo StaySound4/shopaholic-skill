@@ -3,7 +3,7 @@
 Tests:
 1. Pass: Synthetic all-pass experiment summary yields PASS_RELEASE.
 2. Fail: Injected critical safety defect cannot be averaged away and yields hard FAIL_BLOCKED.
-3. Adversarial: Attempting to mutate gate thresholds under the same experiment ID is blocked.
+3. Adversarial: Attempting to mutate gate thresholds under the same experiment ID or protocol version is blocked.
 """
 import unittest, sys
 from pathlib import Path
@@ -80,7 +80,7 @@ class TestTicket36ReleaseGates(unittest.TestCase):
         self.assertIn("Critical safety", res["decision_rationale"])
 
     def test_03_adversarial_post_hoc_threshold_mutation_blocked(self):
-        """Adversarial path: Lowering threshold under the same experiment ID is strictly rejected."""
+        """Adversarial path: Lowering threshold under the same experiment ID or protocol version is strictly rejected."""
         mutated_gates = dict(self.manifest["release_gates"])
         mutated_gates["min_accuracy_delta"] = 0.05 # Lower threshold post-hoc
 
@@ -88,20 +88,33 @@ class TestTicket36ReleaseGates(unittest.TestCase):
         success_same, err_same, _ = attempt_gate_threshold_mutation(
             self.manifest,
             mutated_gates,
-            new_experiment_id="EXP_2026_V1"
+            new_experiment_id="EXP_2026_V1",
+            new_protocol_version="v1.1"
         )
         self.assertFalse(success_same)
-        self.assertIn("Gate threshold mutation rejected", err_same)
+        self.assertIn("new experiment ID", err_same)
 
-        # Attempt with new ID -> SUCCEEDS
+        # Attempt with same protocol version -> MUST FAIL
+        success_proto, err_proto, _ = attempt_gate_threshold_mutation(
+            self.manifest,
+            mutated_gates,
+            new_experiment_id="EXP_2026_V2",
+            new_protocol_version="v1.0"
+        )
+        self.assertFalse(success_proto)
+        self.assertIn("new protocol version", err_proto)
+
+        # Attempt with new ID AND new protocol version -> SUCCEEDS
         success_new, err_new, new_m = attempt_gate_threshold_mutation(
             self.manifest,
             mutated_gates,
-            new_experiment_id="EXP_2026_V2_RELAXED"
+            new_experiment_id="EXP_2026_V2_RELAXED",
+            new_protocol_version="v1.1_custom"
         )
         self.assertTrue(success_new)
         self.assertIsNone(err_new)
         self.assertEqual(new_m["experiment_id"], "EXP_2026_V2_RELAXED")
+        self.assertEqual(new_m["protocol_version"], "v1.1_custom")
 
 if __name__ == "__main__":
     unittest.main()
