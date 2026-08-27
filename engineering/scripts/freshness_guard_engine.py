@@ -28,12 +28,12 @@ KNOWN_STANDARDS_REGISTRY = {
 }
 
 def resolve_dynamic_query_year(query_template: str, current_year: Optional[int] = None) -> str:
-    """Replaces hardcoded temporal year tokens and static historical year literals with runtime year."""
+    """Replaces hardcoded temporal year tokens and static year literals (2025/2026/202x) with runtime year."""
     year = current_year if current_year is not None else datetime.date.today().year
     # Replace template placeholders
     resolved = query_template.replace("{{CURRENT_YEAR}}", str(year)).replace("{year}", str(year))
-    # Replace explicit past year literals like 2024 or 2025 with dynamic current year
-    resolved = re.sub(r"\b202[0-5]\b", str(year), resolved)
+    # Replace explicit static year literals (2020-2029) including 2025 and 2026 with dynamic current year
+    resolved = re.sub(r"\b202[0-9]\b", str(year), resolved)
     return resolved
 
 def audit_standard_citation(

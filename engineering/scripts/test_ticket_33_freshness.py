@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Test suite for Ticket 33: Add freshness guards for static references and runtime temporal facts.
 Tests:
-1. Pass: Dynamic year resolution for tokens and fixed year literals, active standard status (GB 4706.1-2024), and standard errata (IEEE 1789 vs 1788).
+1. Pass: Dynamic year resolution for tokens and fixed year literals (2025/2026), active standard status (GB 4706.1-2024), and standard errata (IEEE 1789 vs 1788).
 2. Pass: Superseded and repealed standard statuses detected.
 3. Pass: Timeless physical principles remain undated and valid.
 4. Adversarial: Stale static reference cannot override live registry active status from std.samr.gov.cn; expired references degrade to B.
@@ -18,13 +18,16 @@ from freshness_guard_engine import (
 
 class TestTicket33Freshness(unittest.TestCase):
     def test_01_dynamic_year_literal_and_standard_errata_resolution(self):
-        """Pass path: Dynamic year token AND fixed past year literals resolved, IEEE 1788 erratum detected, GB 4706.1-2024 verified active."""
-        # 1. Dynamic year for placeholder and literal
-        query_token = resolve_dynamic_query_year("best OLED monitor {{CURRENT_YEAR}} deals", current_year=2026)
-        self.assertEqual(query_token, "best OLED monitor 2026 deals")
+        """Pass path: Dynamic year token AND fixed year literals (2025/2026) resolved, IEEE 1788 erratum detected, GB 4706.1-2024 verified active."""
+        # 1. Dynamic year for placeholder and 2025/2026 literals
+        query_token = resolve_dynamic_query_year("best OLED monitor {{CURRENT_YEAR}} deals", current_year=2027)
+        self.assertEqual(query_token, "best OLED monitor 2027 deals")
 
-        query_literal = resolve_dynamic_query_year("best coffee grinder 2025 recommendations", current_year=2026)
-        self.assertEqual(query_literal, "best coffee grinder 2026 recommendations")
+        query_literal_2025 = resolve_dynamic_query_year("best coffee grinder 2025 recommendations", current_year=2027)
+        self.assertEqual(query_literal_2025, "best coffee grinder 2027 recommendations")
+
+        query_literal_2026 = resolve_dynamic_query_year("best display monitors 2026 guide", current_year=2027)
+        self.assertEqual(query_literal_2026, "best display monitors 2027 guide")
 
         # 2. IEEE 1788 vs 1789 erratum
         erratum_res = audit_standard_citation("This lamp complies with IEEE 1788-2015 low flicker standard.", "IEEE 1789-2015")
