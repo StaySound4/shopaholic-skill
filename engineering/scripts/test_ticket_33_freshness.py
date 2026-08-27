@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Test suite for Ticket 33: Add freshness guards for static references and runtime temporal facts.
 Tests:
-1. Pass: Dynamic year resolution, active standard status verification (GB 4706.1-2024), and standard code errata (IEEE 1789 vs 1788).
-2. Pass: Timeless physical principles remain undated and valid.
-3. Adversarial: Stale static reference cannot override live registry active status from std.samr.gov.cn; expired references degrade to B.
+1. Pass: Dynamic year resolution for tokens and fixed year literals, active standard status (GB 4706.1-2024), and standard errata (IEEE 1789 vs 1788).
+2. Pass: Superseded and repealed standard statuses detected.
+3. Pass: Timeless physical principles remain undated and valid.
+4. Adversarial: Stale static reference cannot override live registry active status from std.samr.gov.cn; expired references degrade to B.
 """
 import unittest, sys
 from pathlib import Path
@@ -16,11 +17,14 @@ from freshness_guard_engine import (
 )
 
 class TestTicket33Freshness(unittest.TestCase):
-    def test_01_dynamic_year_and_standard_errata_resolution(self):
-        """Pass path: Dynamic year token resolved, IEEE 1788 erratum detected, and GB 4706.1-2024 verified active."""
-        # 1. Dynamic year
-        query = resolve_dynamic_query_year("best OLED monitor {{CURRENT_YEAR}} deals", current_year=2026)
-        self.assertEqual(query, "best OLED monitor 2026 deals")
+    def test_01_dynamic_year_literal_and_standard_errata_resolution(self):
+        """Pass path: Dynamic year token AND fixed past year literals resolved, IEEE 1788 erratum detected, GB 4706.1-2024 verified active."""
+        # 1. Dynamic year for placeholder and literal
+        query_token = resolve_dynamic_query_year("best OLED monitor {{CURRENT_YEAR}} deals", current_year=2026)
+        self.assertEqual(query_token, "best OLED monitor 2026 deals")
+
+        query_literal = resolve_dynamic_query_year("best coffee grinder 2025 recommendations", current_year=2026)
+        self.assertEqual(query_literal, "best coffee grinder 2026 recommendations")
 
         # 2. IEEE 1788 vs 1789 erratum
         erratum_res = audit_standard_citation("This lamp complies with IEEE 1788-2015 low flicker standard.", "IEEE 1789-2015")
@@ -34,19 +38,29 @@ class TestTicket33Freshness(unittest.TestCase):
         self.assertEqual(status_res["error_type"], "obsolete_status_phrasing")
         self.assertEqual(status_res["status"], "active")
 
-    def test_02_timeless_physical_principles_undated(self):
+    def test_02_superseded_and_repealed_standard_audit(self):
+        """Pass path: Superseded standard (GB 4706.1-2005) and repealed status are flagged."""
+        res_superseded = audit_standard_citation("Complies with GB 4706.1-2005 appliance standard.", "GB 4706.1-2005")
+        self.assertFalse(res_superseded["is_valid"])
+        self.assertEqual(res_superseded["status"], "superseded")
+        self.assertEqual(res_superseded["successor"], "GB 4706.1-2024")
+
+        res_repealed = audit_standard_citation("Complies with old standard", "OLD_STD", live_registry_status="repealed")
+        self.assertFalse(res_repealed["is_valid"])
+        self.assertEqual(res_repealed["status"], "repealed")
+
+    def test_03_timeless_physical_principles_undated(self):
         """Pass path: Stable physical/optical/acoustic principles remain undated without expiry."""
         res = evaluate_reference_freshness(
             reference_id="BEER_LAMBERT_LAW_OPTICS",
             published_date_str="1990-01-01",
-            is_timeless_physics=True,
-            current_date_str="2026-08-28"
+            is_timeless_physics=True
         )
         self.assertTrue(res["is_fresh"])
         self.assertEqual(res["confidence_grade"], "S")
         self.assertFalse(res.get("requires_reverification", False))
 
-    def test_03_adversarial_stale_reference_overridden_and_degraded(self):
+    def test_04_adversarial_stale_reference_overridden_and_degraded(self):
         """Adversarial path: Stale cached text cannot override live registry, and old price references degrade to B."""
         # Live registry check overrides stale text
         res = audit_standard_citation(
