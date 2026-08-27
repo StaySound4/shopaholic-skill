@@ -6,6 +6,9 @@
   "bin": {
     "install-shopaholic": "./bin/cli.js"
   },
+  "scripts": {
+    "test": "node scripts/ablation-suite.js"
+  },
   "keywords": [
     "agent-skills",
     "claude-skills",
